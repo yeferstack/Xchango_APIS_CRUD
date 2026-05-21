@@ -11,13 +11,13 @@ import (
 )
 
 type HistorialContrasena struct {
-	Id                int       `orm:"column(id_historial);pk"`
+	Id                int       `orm:"column(id_historial);pk;auto"`
 	IdUsuario         *Usuario  `orm:"column(id_usuario);rel(fk)"`
 	ContrasenaHash    string    `orm:"column(contrasena_hash)"`
 	FechaCambio       time.Time `orm:"column(fecha_cambio);type(timestamp without time zone)"`
 	Activo            bool      `orm:"column(activo)"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
+	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
 }
 
 func (t *HistorialContrasena) TableName() string {

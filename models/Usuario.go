@@ -11,12 +11,12 @@ import (
 )
 
 type Usuario struct {
-	Id                int       `orm:"column(id_usuario);pk"`
+	Id                int       `orm:"column(id_usuario);pk;auto"`
 	Correo            string    `orm:"column(correo)"`
 	CorreoVerificado  bool      `orm:"column(correo_verificado)"`
 	Activo            bool      `orm:"column(activo)"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
+	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
 }
 
 func (t *Usuario) TableName() string {

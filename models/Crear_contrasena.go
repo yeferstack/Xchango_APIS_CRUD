@@ -11,12 +11,12 @@ import (
 )
 
 type CrearContrasena struct {
-	Id                  int       `orm:"column(id_usuario);pk"`
+	Id                  int       `orm:"column(id_usuario);pk;auto"`
 	Contrasena          string    `orm:"column(contrasena)"`
 	ConfirmarContrasena string    `orm:"column(confirmar_contrasena)"`
 	Activo              bool      `orm:"column(activo)"`
-	FechaCreacion       time.Time `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion   time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion       time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
+	FechaModificacion   time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
 }
 
 func (t *CrearContrasena) TableName() string {

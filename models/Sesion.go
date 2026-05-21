@@ -11,7 +11,7 @@ import (
 )
 
 type Sesion struct {
-	Id                int       `orm:"column(id_sesion);pk"`
+	Id                int       `orm:"column(id_sesion);pk;auto"`
 	IdUsuario         *Usuario  `orm:"column(id_usuario);rel(fk)"`
 	TokenSesion       string    `orm:"column(token_sesion)"`
 	IpOrigen          string    `orm:"column(ip_origen);null"`
@@ -20,8 +20,8 @@ type Sesion struct {
 	FechaExpiracion   time.Time `orm:"column(fecha_expiracion);type(timestamp without time zone)"`
 	Revocada          bool      `orm:"column(revocada)"`
 	Activo            bool      `orm:"column(activo)"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
+	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
 }
 
 func (t *Sesion) TableName() string {

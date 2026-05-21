@@ -11,7 +11,7 @@ import (
 )
 
 type IntentoLogin struct {
-	Id                int       `orm:"column(id_intento);pk"`
+	Id                int       `orm:"column(id_intento);pk;auto"`
 	IdUsuario         *Usuario  `orm:"column(id_usuario);rel(fk)"`
 	EmailIngresado    string    `orm:"column(email_ingresado);null"`
 	Exitoso           bool      `orm:"column(exitoso)"`
@@ -19,8 +19,8 @@ type IntentoLogin struct {
 	IpOrigen          string    `orm:"column(ip_origen);null"`
 	Fecha             time.Time `orm:"column(fecha);type(timestamp without time zone)"`
 	Activo            bool      `orm:"column(activo)"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
+	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
 }
 
 func (t *IntentoLogin) TableName() string {

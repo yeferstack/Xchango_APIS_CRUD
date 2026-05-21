@@ -11,14 +11,14 @@ import (
 )
 
 type Credenciales struct {
-	Id                int       `orm:"column(id_usuario);pk"`
+	Id                int       `orm:"column(id_usuario);pk;auto"`
 	ContrasenaHash    string    `orm:"column(contrasena_hash)"`
 	IntentosFallidos  int       `orm:"column(intentos_fallidos)"`
 	Bloqueado         bool      `orm:"column(bloqueado)"`
 	UltimoLogin       time.Time `orm:"column(ultimo_login);type(timestamp without time zone);null"`
 	Activo            bool      `orm:"column(activo)"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
+	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
 }
 
 func (t *Credenciales) TableName() string {

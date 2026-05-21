@@ -11,15 +11,15 @@ import (
 )
 
 type RecuperacionContrasena struct {
-	Id                int       `orm:"column(id_recuperacion);pk"`
+	Id                int       `orm:"column(id_recuperacion);pk;auto"`
 	IdUsuario         *Usuario  `orm:"column(id_usuario);rel(fk)"`
 	Token             string    `orm:"column(token)"`
 	Codigo            string    `orm:"column(codigo);null"`
 	Usado             bool      `orm:"column(usado)"`
 	FechaExpiracion   time.Time `orm:"column(fecha_expiracion);type(timestamp without time zone)"`
 	Activo            bool      `orm:"column(activo)"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
+	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
 }
 
 func (t *RecuperacionContrasena) TableName() string {

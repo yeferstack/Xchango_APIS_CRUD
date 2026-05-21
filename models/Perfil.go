@@ -11,7 +11,7 @@ import (
 )
 
 type Perfil struct {
-	Id                int       `orm:"column(id_perfil);pk"`
+	Id                int       `orm:"column(id_perfil);pk;auto"`
 	IdUsuario         *Usuario  `orm:"column(id_usuario);rel(fk)"`
 	Nombre            string    `orm:"column(nombre)"`
 	Apellido          string    `orm:"column(apellido)"`
@@ -24,8 +24,8 @@ type Perfil struct {
 	Biografia         string    `orm:"column(biografia);null"`
 	FotoPerfil        string    `orm:"column(foto_perfil);null"`
 	Activo            bool      `orm:"column(activo)"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
+	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
 }
 
 func (t *Perfil) TableName() string {
