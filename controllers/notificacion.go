@@ -58,9 +58,9 @@ func (c *NotificacionController) GetOne() {
 	id, _ := strconv.Atoi(idStr)
 	v, err := models.GetNotificacionById(id)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": "Error en el servicio GetOne: La solicitud contiene un parametro incorrecto o no existe ningun registro"}
 	} else {
-		c.Data["json"] = v
+		c.Data["json"] = map[string]interface{}{"success": true, "status": 200, "Message": "Peticion exitosa", "data": v}
 	}
 	c.ServeJSON()
 }
@@ -119,11 +119,11 @@ func (c *NotificacionController) GetAll() {
 		}
 	}
 
-	l, err := models.GetAllNotificacion(query, fields, sortby, order, offset, limit)
+l, err := models.GetAllNotificacion(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": "Error en el servicio GetAll: La solicitud contiene un parametro incorrecto o no existe ningun registro"}
 	} else {
-		c.Data["json"] = l
+		c.Data["json"] = map[string]interface{}{"success": true, "status": 200, "Message": "Peticion exitosa", "data": l}
 	}
 	c.ServeJSON()
 }
