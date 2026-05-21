@@ -5,7 +5,7 @@ go 1.26
 require github.com/beego/beego/v2 v2.1.0
 
 require (
-	github.com/beego/bee/v2 v2.3.0
+	github.com/joho/godotenv v1.5.1
 	github.com/lib/pq v1.10.5
 )
 
