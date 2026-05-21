@@ -1,0 +1,1404 @@
+swagger: "2.0"
+info:
+  title: beego Test API
+  description: |
+    beego has a very cool tools to autogenerate documents for your API
+  version: 1.0.0
+  termsOfService: http://beego.me/
+  contact:
+    email: astaxie@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+basePath: /v1
+paths:
+  /BienDigital/:
+    get:
+      tags:
+      - BienDigital
+      description: |-
+        get BienDigital
+        <br>
+      operationId: BienDigitalController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.BienDigital'
+        "403":
+          description: ""
+    post:
+      tags:
+      - BienDigital
+      description: |-
+        create BienDigital
+        <br>
+      operationId: BienDigitalController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for BienDigital content
+        required: true
+        schema:
+          $ref: '#/definitions/models.BienDigital'
+      responses:
+        "201":
+          description: '{int} models.BienDigital'
+        "403":
+          description: body is empty
+  /BienDigital/{id}:
+    get:
+      tags:
+      - BienDigital
+      description: |-
+        get BienDigital by id
+        <br>
+      operationId: BienDigitalController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.BienDigital'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - BienDigital
+      description: |-
+        update the BienDigital
+        <br>
+      operationId: BienDigitalController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for BienDigital content
+        required: true
+        schema:
+          $ref: '#/definitions/models.BienDigital'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.BienDigital'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - BienDigital
+      description: |-
+        delete the BienDigital
+        <br>
+      operationId: BienDigitalController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /BienFisico/:
+    get:
+      tags:
+      - BienFisico
+      description: |-
+        get BienFisico
+        <br>
+      operationId: BienFisicoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.BienFisico'
+        "403":
+          description: ""
+    post:
+      tags:
+      - BienFisico
+      description: |-
+        create BienFisico
+        <br>
+      operationId: BienFisicoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for BienFisico content
+        required: true
+        schema:
+          $ref: '#/definitions/models.BienFisico'
+      responses:
+        "201":
+          description: '{int} models.BienFisico'
+        "403":
+          description: body is empty
+  /BienFisico/{id}:
+    get:
+      tags:
+      - BienFisico
+      description: |-
+        get BienFisico by id
+        <br>
+      operationId: BienFisicoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.BienFisico'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - BienFisico
+      description: |-
+        update the BienFisico
+        <br>
+      operationId: BienFisicoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for BienFisico content
+        required: true
+        schema:
+          $ref: '#/definitions/models.BienFisico'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.BienFisico'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - BienFisico
+      description: |-
+        delete the BienFisico
+        <br>
+      operationId: BienFisicoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /EstadoPublicacion/:
+    get:
+      tags:
+      - EstadoPublicacion
+      description: |-
+        get EstadoPublicacion
+        <br>
+      operationId: EstadoPublicacionController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.EstadoPublicacion'
+        "403":
+          description: ""
+    post:
+      tags:
+      - EstadoPublicacion
+      description: |-
+        create EstadoPublicacion
+        <br>
+      operationId: EstadoPublicacionController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for EstadoPublicacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.EstadoPublicacion'
+      responses:
+        "201":
+          description: '{int} models.EstadoPublicacion'
+        "403":
+          description: body is empty
+  /EstadoPublicacion/{id}:
+    get:
+      tags:
+      - EstadoPublicacion
+      description: |-
+        get EstadoPublicacion by id
+        <br>
+      operationId: EstadoPublicacionController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.EstadoPublicacion'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - EstadoPublicacion
+      description: |-
+        update the EstadoPublicacion
+        <br>
+      operationId: EstadoPublicacionController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for EstadoPublicacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.EstadoPublicacion'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.EstadoPublicacion'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - EstadoPublicacion
+      description: |-
+        delete the EstadoPublicacion
+        <br>
+      operationId: EstadoPublicacionController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /Favorito/:
+    get:
+      tags:
+      - Favorito
+      description: |-
+        get Favorito
+        <br>
+      operationId: FavoritoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Favorito'
+        "403":
+          description: ""
+    post:
+      tags:
+      - Favorito
+      description: |-
+        create Favorito
+        <br>
+      operationId: FavoritoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Favorito content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Favorito'
+      responses:
+        "201":
+          description: '{int} models.Favorito'
+        "403":
+          description: body is empty
+  /Favorito/{id}:
+    get:
+      tags:
+      - Favorito
+      description: |-
+        get Favorito by id
+        <br>
+      operationId: FavoritoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Favorito'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - Favorito
+      description: |-
+        update the Favorito
+        <br>
+      operationId: FavoritoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Favorito content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Favorito'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Favorito'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - Favorito
+      description: |-
+        delete the Favorito
+        <br>
+      operationId: FavoritoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /ImagenPublicacion/:
+    get:
+      tags:
+      - ImagenPublicacion
+      description: |-
+        get ImagenPublicacion
+        <br>
+      operationId: ImagenPublicacionController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ImagenPublicacion'
+        "403":
+          description: ""
+    post:
+      tags:
+      - ImagenPublicacion
+      description: |-
+        create ImagenPublicacion
+        <br>
+      operationId: ImagenPublicacionController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for ImagenPublicacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ImagenPublicacion'
+      responses:
+        "201":
+          description: '{int} models.ImagenPublicacion'
+        "403":
+          description: body is empty
+  /ImagenPublicacion/{id}:
+    get:
+      tags:
+      - ImagenPublicacion
+      description: |-
+        get ImagenPublicacion by id
+        <br>
+      operationId: ImagenPublicacionController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ImagenPublicacion'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - ImagenPublicacion
+      description: |-
+        update the ImagenPublicacion
+        <br>
+      operationId: ImagenPublicacionController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for ImagenPublicacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ImagenPublicacion'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ImagenPublicacion'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - ImagenPublicacion
+      description: |-
+        delete the ImagenPublicacion
+        <br>
+      operationId: ImagenPublicacionController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /Publicacion/:
+    get:
+      tags:
+      - Publicacion
+      description: |-
+        get Publicacion
+        <br>
+      operationId: PublicacionController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Publicacion'
+        "403":
+          description: ""
+    post:
+      tags:
+      - Publicacion
+      description: |-
+        create Publicacion
+        <br>
+      operationId: PublicacionController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Publicacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Publicacion'
+      responses:
+        "201":
+          description: '{int} models.Publicacion'
+        "403":
+          description: body is empty
+  /Publicacion/{id}:
+    get:
+      tags:
+      - Publicacion
+      description: |-
+        get Publicacion by id
+        <br>
+      operationId: PublicacionController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Publicacion'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - Publicacion
+      description: |-
+        update the Publicacion
+        <br>
+      operationId: PublicacionController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Publicacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Publicacion'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Publicacion'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - Publicacion
+      description: |-
+        delete the Publicacion
+        <br>
+      operationId: PublicacionController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /PublicacionCategoria/:
+    get:
+      tags:
+      - PublicacionCategoria
+      description: |-
+        get PublicacionCategoria
+        <br>
+      operationId: PublicacionCategoriaController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PublicacionCategoria'
+        "403":
+          description: ""
+    post:
+      tags:
+      - PublicacionCategoria
+      description: |-
+        create PublicacionCategoria
+        <br>
+      operationId: PublicacionCategoriaController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for PublicacionCategoria content
+        required: true
+        schema:
+          $ref: '#/definitions/models.PublicacionCategoria'
+      responses:
+        "201":
+          description: '{int} models.PublicacionCategoria'
+        "403":
+          description: body is empty
+  /PublicacionCategoria/{id}:
+    get:
+      tags:
+      - PublicacionCategoria
+      description: |-
+        get PublicacionCategoria by id
+        <br>
+      operationId: PublicacionCategoriaController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PublicacionCategoria'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - PublicacionCategoria
+      description: |-
+        update the PublicacionCategoria
+        <br>
+      operationId: PublicacionCategoriaController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for PublicacionCategoria content
+        required: true
+        schema:
+          $ref: '#/definitions/models.PublicacionCategoria'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PublicacionCategoria'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - PublicacionCategoria
+      description: |-
+        delete the PublicacionCategoria
+        <br>
+      operationId: PublicacionCategoriaController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /Servicio/:
+    get:
+      tags:
+      - Servicio
+      description: |-
+        get Servicio
+        <br>
+      operationId: ServicioController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Servicio'
+        "403":
+          description: ""
+    post:
+      tags:
+      - Servicio
+      description: |-
+        create Servicio
+        <br>
+      operationId: ServicioController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Servicio content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Servicio'
+      responses:
+        "201":
+          description: '{int} models.Servicio'
+        "403":
+          description: body is empty
+  /Servicio/{id}:
+    get:
+      tags:
+      - Servicio
+      description: |-
+        get Servicio by id
+        <br>
+      operationId: ServicioController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Servicio'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - Servicio
+      description: |-
+        update the Servicio
+        <br>
+      operationId: ServicioController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Servicio content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Servicio'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Servicio'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - Servicio
+      description: |-
+        delete the Servicio
+        <br>
+      operationId: ServicioController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /sub_Categoria/:
+    get:
+      tags:
+      - sub_Categoria
+      description: |-
+        get SubCategoria
+        <br>
+      operationId: SubCategoriaController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.SubCategoria'
+        "403":
+          description: ""
+    post:
+      tags:
+      - sub_Categoria
+      description: |-
+        create SubCategoria
+        <br>
+      operationId: SubCategoriaController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for SubCategoria content
+        required: true
+        schema:
+          $ref: '#/definitions/models.SubCategoria'
+      responses:
+        "201":
+          description: '{int} models.SubCategoria'
+        "403":
+          description: body is empty
+  /sub_Categoria/{id}:
+    get:
+      tags:
+      - sub_Categoria
+      description: |-
+        get SubCategoria by id
+        <br>
+      operationId: SubCategoriaController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.SubCategoria'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - sub_Categoria
+      description: |-
+        update the SubCategoria
+        <br>
+      operationId: SubCategoriaController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for SubCategoria content
+        required: true
+        schema:
+          $ref: '#/definitions/models.SubCategoria'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.SubCategoria'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - sub_Categoria
+      description: |-
+        delete the SubCategoria
+        <br>
+      operationId: SubCategoriaController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+definitions:
+  models.BienDigital:
+    title: BienDigital
+    type: object
+    properties:
+      AccesoInmediato:
+        type: boolean
+      Activo:
+        type: boolean
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      IdPublicacion:
+        $ref: '#/definitions/models.Publicacion'
+      Licencia:
+        type: string
+      TamanoMb:
+        type: number
+        format: double
+      TipoArchivo:
+        type: string
+  models.BienFisico:
+    title: BienFisico
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      Color:
+        type: string
+      Dimensiones:
+        type: string
+      EstadoProducto:
+        type: string
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      IdPublicacion:
+        $ref: '#/definitions/models.Publicacion'
+      Marca:
+        type: string
+      Modelo:
+        type: string
+      Peso:
+        type: number
+        format: double
+  models.EstadoPublicacion:
+    title: EstadoPublicacion
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+  models.Favorito:
+    title: Favorito
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      IdPublicacion:
+        $ref: '#/definitions/models.Publicacion'
+      IdUsuario:
+        type: integer
+        format: int64
+  models.ImagenPublicacion:
+    title: ImagenPublicacion
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      IdPublicacion:
+        $ref: '#/definitions/models.Publicacion'
+      Orden:
+        type: integer
+        format: int64
+      Tipo:
+        type: string
+      Url:
+        type: string
+  models.Publicacion:
+    title: Publicacion
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      Barrio:
+        type: string
+      CantidadDisponible:
+        type: integer
+        format: int64
+      Departamento:
+        type: string
+      Descripcion:
+        type: string
+      DisponibleParaTrueque:
+        type: boolean
+      Favoritos:
+        type: integer
+        format: int64
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      IdEstado:
+        $ref: '#/definitions/models.EstadoPublicacion'
+      IdUsuario:
+        type: integer
+        format: int64
+      MensajeContacto:
+        type: string
+      Municipio:
+        type: string
+      Prioridad:
+        type: integer
+        format: int64
+      Tipo:
+        type: string
+      Titulo:
+        type: string
+      Visibilidad:
+        type: string
+      Vistas:
+        type: integer
+        format: int64
+  models.PublicacionCategoria:
+    title: PublicacionCategoria
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      IdCategoria:
+        $ref: '#/definitions/models.SubCategoria'
+      IdPublicacion:
+        $ref: '#/definitions/models.Publicacion'
+  models.Servicio:
+    title: Servicio
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      Disponibilidad:
+        type: string
+      Duracion:
+        type: string
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      IdPublicacion:
+        $ref: '#/definitions/models.Publicacion'
+      Modalidad:
+        type: string
+      Requisitos:
+        type: string
+  models.SubCategoria:
+    title: SubCategoria
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      Electronico:
+        type: string
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      Juguetes:
+        type: string
+      Libros:
+        type: string
+      Muebles:
+        type: string
+      Ropa:
+        type: string
+      Vehiculos:
+        type: string
+tags:
+- name: EstadoPublicacion
+  description: |
+    EstadoPublicacionController operations for EstadoPublicacion
+- name: Publicacion
+  description: |
+    PublicacionController operations for Publicacion
+- name: ImagenPublicacion
+  description: |
+    ImagenPublicacionController operations for ImagenPublicacion
+- name: PublicacionCategoria
+  description: |
+    PublicacionCategoriaController operations for PublicacionCategoria
+- name: sub_Categoria
+  description: |
+    SubCategoriaController operations for SubCategoria
+- name: BienFisico
+  description: |
+    BienFisicoController operations for BienFisico
+- name: Servicio
+  description: |
+    ServicioController operations for Servicio
+- name: BienDigital
+  description: |
+    BienDigitalController operations for BienDigital
+- name: Favorito
+  description: |
+    FavoritoController operations for Favorito
