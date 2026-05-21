@@ -11,7 +11,7 @@ import (
 )
 
 type SubCategoria struct {
-	Id                int       `orm:"column(id_categoria);pk"`
+	Id                int       `orm:"column(id_categoria);pk;auto"`
 	Electronico       string    `orm:"column(electronico);null"`
 	Vehiculos         string    `orm:"column(vehiculos);null"`
 	Ropa              string    `orm:"column(ropa);null"`
@@ -19,8 +19,8 @@ type SubCategoria struct {
 	Muebles           string    `orm:"column(muebles);null"`
 	Juguetes          string    `orm:"column(juguetes);null"`
 	Activo            bool      `orm:"column(activo)"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
+	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
 }
 
 func (t *SubCategoria) TableName() string {

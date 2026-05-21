@@ -11,7 +11,7 @@ import (
 )
 
 type Publicacion struct {
-	Id                    int                `orm:"column(id_publicacion);pk"`
+	Id                    int                `orm:"column(id_publicacion);pk;auto"`
 	IdUsuario             int                `orm:"column(id_usuario)"`
 	IdEstado              *EstadoPublicacion `orm:"column(id_estado);rel(fk)"`
 	Titulo                string             `orm:"column(titulo)"`
@@ -28,8 +28,8 @@ type Publicacion struct {
 	Vistas                int                `orm:"column(vistas);null"`
 	Favoritos             int                `orm:"column(favoritos);null"`
 	Activo                bool               `orm:"column(activo)"`
-	FechaCreacion         time.Time          `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion     time.Time          `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion         time.Time          `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
+	FechaModificacion     time.Time          `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
 }
 
 func (t *Publicacion) TableName() string {

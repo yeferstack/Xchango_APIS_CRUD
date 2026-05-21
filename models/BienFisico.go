@@ -11,7 +11,7 @@ import (
 )
 
 type BienFisico struct {
-	Id                int          `orm:"column(id_bien);pk"`
+	Id                int          `orm:"column(id_bien);pk;auto"`
 	IdPublicacion     *Publicacion `orm:"column(id_publicacion);rel(fk)"`
 	EstadoProducto    string       `orm:"column(estado_producto);null"`
 	Marca             string       `orm:"column(marca);null"`
@@ -20,8 +20,8 @@ type BienFisico struct {
 	Peso              float64      `orm:"column(peso);null"`
 	Dimensiones       string       `orm:"column(dimensiones);null"`
 	Activo            bool         `orm:"column(activo)"`
-	FechaCreacion     time.Time    `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time    `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion     time.Time    `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
+	FechaModificacion time.Time    `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
 }
 
 func (t *BienFisico) TableName() string {

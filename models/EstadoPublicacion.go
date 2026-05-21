@@ -11,10 +11,10 @@ import (
 )
 
 type EstadoPublicacion struct {
-	Id                int       `orm:"column(id_estado);pk"`
+	Id                int       `orm:"column(id_estado);pk;auto"`
 	Activo            bool      `orm:"column(activo)"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
+	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
 }
 
 func (t *EstadoPublicacion) TableName() string {

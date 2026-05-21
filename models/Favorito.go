@@ -11,12 +11,12 @@ import (
 )
 
 type Favorito struct {
-	Id                int          `orm:"column(id_favorito);pk"`
+	Id                int          `orm:"column(id_favorito);pk;auto"`
 	IdUsuario         int          `orm:"column(id_usuario)"`
 	IdPublicacion     *Publicacion `orm:"column(id_publicacion);rel(fk)"`
 	Activo            bool         `orm:"column(activo)"`
-	FechaCreacion     time.Time    `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time    `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion     time.Time    `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
+	FechaModificacion time.Time    `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
 }
 
 func (t *Favorito) TableName() string {

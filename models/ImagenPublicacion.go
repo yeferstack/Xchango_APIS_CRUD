@@ -11,14 +11,14 @@ import (
 )
 
 type ImagenPublicacion struct {
-	Id                int          `orm:"column(id_imagen);pk"`
+	Id                int          `orm:"column(id_imagen);pk;auto"`
 	IdPublicacion     *Publicacion `orm:"column(id_publicacion);rel(fk)"`
 	Url               string       `orm:"column(url)"`
 	Tipo              string       `orm:"column(tipo);null"`
 	Orden             int          `orm:"column(orden);null"`
 	Activo            bool         `orm:"column(activo)"`
-	FechaCreacion     time.Time    `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time    `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion     time.Time    `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
+	FechaModificacion time.Time    `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
 }
 
 func (t *ImagenPublicacion) TableName() string {

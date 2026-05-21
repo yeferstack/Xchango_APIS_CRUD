@@ -11,15 +11,15 @@ import (
 )
 
 type BienDigital struct {
-	Id                int          `orm:"column(id_bien_digital);pk"`
+	Id                int          `orm:"column(id_bien_digital);pk;auto"`
 	IdPublicacion     *Publicacion `orm:"column(id_publicacion);rel(fk)"`
 	TipoArchivo       string       `orm:"column(tipo_archivo);null"`
 	TamanoMb          float64      `orm:"column(tamano_mb);null"`
 	Licencia          string       `orm:"column(licencia);null"`
 	AccesoInmediato   bool         `orm:"column(acceso_inmediato);null"`
 	Activo            bool         `orm:"column(activo)"`
-	FechaCreacion     time.Time    `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time    `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion     time.Time    `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
+	FechaModificacion time.Time    `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
 }
 
 func (t *BienDigital) TableName() string {
