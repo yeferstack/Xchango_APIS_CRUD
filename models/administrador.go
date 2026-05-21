@@ -28,34 +28,31 @@ func init() {
 	orm.RegisterModel(new(Administrador))
 }
 
-// AddAdministrador insert a new Administrador into database and returns
-// last inserted Id on success.
 func AddAdministrador(m *Administrador) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetAdministradorById retrieves Administrador by Id. Returns error if
-// Id doesn't exist
+// GetAdministradorById: 
 func GetAdministradorById(id int) (v *Administrador, err error) {
 	o := orm.NewOrm()
 	v = &Administrador{Id: id}
 	if err = o.Read(v); err == nil {
+		o.LoadRelated(v, "IdNivelacceso") 
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllAdministrador retrieves all Administrador matches certain condition. Returns empty list if
-// no records exist
+// GetAllAdministrador: 
 func GetAllAdministrador(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(Administrador))
-	// query k=v
+	// <-- LO ÚNICO AGREGADO AQUÍ (.RelatedSel())
+	qs := o.QueryTable(new(Administrador)).RelatedSel() 
+    
 	for k, v := range query {
-		// rewrite dot-notation to Object__Attribute
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
 			qs = qs.Filter(k, (v == "true" || v == "1"))
@@ -63,11 +60,10 @@ func GetAllAdministrador(query map[string]string, fields []string, sortby []stri
 			qs = qs.Filter(k, v)
 		}
 	}
-	// order by:
+
 	var sortFields []string
 	if len(sortby) != 0 {
 		if len(sortby) == len(order) {
-			// 1) for each sort field, there is an associated order
 			for i, v := range sortby {
 				orderby := ""
 				if order[i] == "desc" {
@@ -81,7 +77,6 @@ func GetAllAdministrador(query map[string]string, fields []string, sortby []stri
 			}
 			qs = qs.OrderBy(sortFields...)
 		} else if len(sortby) != len(order) && len(order) == 1 {
-			// 2) there is exactly one order, all the sorted fields will be sorted by this order
 			for _, v := range sortby {
 				orderby := ""
 				if order[0] == "desc" {
@@ -110,7 +105,6 @@ func GetAllAdministrador(query map[string]string, fields []string, sortby []stri
 				ml = append(ml, v)
 			}
 		} else {
-			// trim unused fields
 			for _, v := range l {
 				m := make(map[string]interface{})
 				val := reflect.ValueOf(v)
@@ -125,12 +119,9 @@ func GetAllAdministrador(query map[string]string, fields []string, sortby []stri
 	return nil, err
 }
 
-// UpdateAdministrador updates Administrador by Id and returns error if
-// the record to be updated doesn't exist
 func UpdateAdministradorById(m *Administrador) (err error) {
 	o := orm.NewOrm()
 	v := Administrador{Id: m.Id}
-	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
 		if num, err = o.Update(m); err == nil {
@@ -140,12 +131,9 @@ func UpdateAdministradorById(m *Administrador) (err error) {
 	return
 }
 
-// DeleteAdministrador deletes Administrador by Id and returns error if
-// the record to be deleted doesn't exist
 func DeleteAdministrador(id int) (err error) {
 	o := orm.NewOrm()
 	v := Administrador{Id: id}
-	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
 		if num, err = o.Delete(&Administrador{Id: id}); err == nil {
