@@ -11,13 +11,13 @@ import (
 )
 
 type Administrador struct {
-	Id                int          `orm:"column(id_admin);pk"`
+	Id                int          `orm:"column(id_admin);pk;auto"`
 	IdUsuario         int          `orm:"column(id_usuario)"`
 	IdNivelacceso     *NivelAcceso `orm:"column(id_nivelacceso);rel(fk)"`
 	Activo            bool         `orm:"column(activo)"`
 	FechaAsignacion   time.Time    `orm:"column(fecha_asignacion);type(timestamp without time zone)"`
-	FechaCreacion     time.Time    `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time    `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion     time.Time    `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
+	FechaModificacion time.Time    `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
 }
 
 func (t *Administrador) TableName() string {

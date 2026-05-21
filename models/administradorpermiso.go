@@ -15,8 +15,8 @@ type Administradorpermiso struct {
 	IdAdmin           *Administrador `orm:"column(id_admin);rel(fk)"`
 	IdPermiso         *Permiso       `orm:"column(id_permiso);rel(fk)"`
 	Activo            bool           `orm:"column(activo)"`
-	FechaCreacion     time.Time      `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time      `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion     time.Time      `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
+	FechaModificacion time.Time      `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
 }
 
 func (t *Administradorpermiso) TableName() string {

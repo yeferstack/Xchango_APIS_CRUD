@@ -15,8 +15,8 @@ type NivelAcceso struct {
 	Nombre            string    `orm:"column(nombre)"`
 	Activo            bool      `orm:"column(activo)"`
 	FechaAsignacion   time.Time `orm:"column(fecha_asignacion);type(timestamp without time zone)"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
+	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
 }
 
 func (t *NivelAcceso) TableName() string {

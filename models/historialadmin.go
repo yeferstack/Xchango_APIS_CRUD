@@ -19,8 +19,8 @@ type Historialadmin struct {
 	IdObjeto          int            `orm:"column(id_objeto);null"`
 	FechaAccion       time.Time      `orm:"column(fecha_accion);type(timestamp without time zone)"`
 	Activo            bool           `orm:"column(activo)"`
-	FechaCreacion     time.Time      `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time      `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion     time.Time      `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
+	FechaModificacion time.Time      `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
 }
 
 func (t *Historialadmin) TableName() string {
