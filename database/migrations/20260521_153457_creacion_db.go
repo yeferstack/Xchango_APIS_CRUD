@@ -24,7 +24,7 @@ func init() {
 
 // Run the migrations
 func (m *CreacionDb_20260521_153457) Up() {
-	file, err:= ioutil.ReadFile("../database/scripst/20260521_153457_creacion_db_up.sql")
+	file, err:= ioutil.ReadFile("database/scripst/20260521_153457_creacion_db_up.sql")
 
 	if err != nil {
 		fmt.Print(err)
@@ -41,7 +41,7 @@ func (m *CreacionDb_20260521_153457) Up() {
 
 // Reverse the migrations
 func (m *CreacionDb_20260521_153457) Down() {
-	file, err:= ioutil.ReadFile("../database/scripst/20260521_153457_creacion_db_down.sql")
+	file, err:= ioutil.ReadFile("database/scripst/20260521_153457_creacion_db_down.sql")
 
 	if err != nil {
 		fmt.Print(err)
