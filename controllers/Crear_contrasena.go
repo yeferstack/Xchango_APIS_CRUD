@@ -33,16 +33,39 @@ func (c *CrearContrasenaController) URLMapping() {
 // @router / [post]
 func (c *CrearContrasenaController) Post() {
 	var v models.CrearContrasena
+
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+
 		if _, err := models.AddCrearContrasena(&v); err == nil {
+
 			c.Ctx.Output.SetStatus(201)
-			c.Data["json"] = v
+			c.Data["json"] = map[string]interface{}{
+				"success": true,
+				"status":  201,
+				"Message": "Registro creado exitosamente",
+				"data":    v,
+			}
+
 		} else {
-			c.Data["json"] = err.Error()
+
+			c.Data["json"] = map[string]interface{}{
+				"success": false,
+				"status":  400,
+				"Message": "Error en el servicio Post",
+				"error":   err.Error(),
+			}
 		}
+
 	} else {
-		c.Data["json"] = err.Error()
+
+		c.Data["json"] = map[string]interface{}{
+			"success": false,
+			"status":  400,
+			"Message": "Error al leer el body",
+			"error":   err.Error(),
+		}
 	}
+
 	c.ServeJSON()
 }
 
@@ -58,9 +81,9 @@ func (c *CrearContrasenaController) GetOne() {
 	id, _ := strconv.Atoi(idStr)
 	v, err := models.GetCrearContrasenaById(id)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": "Error en el servicio GetOne: La solicitud contiene un parametro incorrecto o no existe ningun registro"}
 	} else {
-		c.Data["json"] = v
+		c.Data["json"] = map[string]interface{}{"success": true, "status": 200, "Message": "Peticion exitosa", "data": v}
 	}
 	c.ServeJSON()
 }
@@ -121,9 +144,9 @@ func (c *CrearContrasenaController) GetAll() {
 
 	l, err := models.GetAllCrearContrasena(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": "Error en el servicio GetAll: La solicitud contiene un parametro incorrecto o no existe ningun registro"}
 	} else {
-		c.Data["json"] = l
+		c.Data["json"] = map[string]interface{}{"success": true, "status": 200, "Message": "Peticion exitosa", "data": l}
 	}
 	c.ServeJSON()
 }
@@ -137,18 +160,43 @@ func (c *CrearContrasenaController) GetAll() {
 // @Failure 403 :id is not int
 // @router /:id [put]
 func (c *CrearContrasenaController) Put() {
+
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
+
 	v := models.CrearContrasena{Id: id}
+
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+
 		if err := models.UpdateCrearContrasenaById(&v); err == nil {
-			c.Data["json"] = "OK"
+
+			c.Data["json"] = map[string]interface{}{
+				"success": true,
+				"status":  200,
+				"Message": "Registro actualizado exitosamente",
+				"data":    v,
+			}
+
 		} else {
-			c.Data["json"] = err.Error()
+
+			c.Data["json"] = map[string]interface{}{
+				"success": false,
+				"status":  400,
+				"Message": "Error en el servicio Put",
+				"error":   err.Error(),
+			}
 		}
+
 	} else {
-		c.Data["json"] = err.Error()
+
+		c.Data["json"] = map[string]interface{}{
+			"success": false,
+			"status":  400,
+			"Message": "Error al leer el body",
+			"error":   err.Error(),
+		}
 	}
+
 	c.ServeJSON()
 }
 
@@ -160,12 +208,27 @@ func (c *CrearContrasenaController) Put() {
 // @Failure 403 id is empty
 // @router /:id [delete]
 func (c *CrearContrasenaController) Delete() {
+
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
+
 	if err := models.DeleteCrearContrasena(id); err == nil {
-		c.Data["json"] = "OK"
+
+		c.Data["json"] = map[string]interface{}{
+			"success": true,
+			"status":  200,
+			"Message": "Registro eliminado exitosamente",
+		}
+
 	} else {
-		c.Data["json"] = err.Error()
+
+		c.Data["json"] = map[string]interface{}{
+			"success": false,
+			"status":  400,
+			"Message": "Error en el servicio Delete",
+			"error":   err.Error(),
+		}
 	}
+
 	c.ServeJSON()
 }

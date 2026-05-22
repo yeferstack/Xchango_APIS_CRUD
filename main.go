@@ -1,67 +1,87 @@
 package main
 
 import (
+	
 	_ "Xchango_APIS_CRUD/routers"
-
+	
+	"github.com/beego/beego/v2/client/orm"
 	beego "github.com/beego/beego/v2/server/web"
 	"github.com/beego/beego/v2/server/web/filter/cors"
-	"github.com/beego/beego/v2/client/orm"
+	
 	_ "github.com/lib/pq"
 	"github.com/joho/godotenv"
 	"fmt"
+	"os"
+	"strconv"
 )
 
 func main() {
-	err:= godotenv.Load()
-	if err != nil{
+
+	// 🔹 Cargar .env
+	err := godotenv.Load()
+	if err != nil {
 		panic("Error cargando archivo .env")
 	}
 
-	err = beego.LoadAppConfig("ini", "conf/app.conf")
-	if err != nil{
-		panic(err)
+	// 🔹 Leer variables XCHANGO
+	pgUser := os.Getenv("XCHANGO_PGUSER")
+	pgPass := os.Getenv("XCHANGO_PGPASS")
+	pgHost := os.Getenv("XCHANGO_PGHOST")
+	pgPort := os.Getenv("XCHANGO_PGPORT")
+	pgDb := os.Getenv("XCHANGO_PGDB")
+	pgSchema := os.Getenv("XCHANGO_PGSCHEMA")
+
+	runMode := os.Getenv("XCHANGO_RUN_MODE")
+	httpPort := os.Getenv("XCHANGO_HTTP_PORT")
+
+	// 🔹 Validación básica
+	if pgUser == "" || pgPass == "" || pgHost == "" || pgPort == "" || pgDb == "" {
+		panic("Variables .env incompletas")
 	}
 
-	pgUser, _ := beego.AppConfig.String("PGuser")
-	pgPass, _ := beego.AppConfig.String("PGpass")
-	pgHost, _ := beego.AppConfig.String("PGhost")
-	pgPort, _ := beego.AppConfig.String("PGport")
-	pgDb, _ := beego.AppConfig.String("PGdb")
-	pgSchema, _ := beego.AppConfig.String("PGschema")
-	fmt.Printf("PostgreSQL connection string: postgres : //%s : %s@%s :%s/%s?sslmode=disable&search_path=%s\n", pgUser, pgPass, pgHost, pgPort, pgDb, pgSchema)
-	
-	orm.RegisterDataBase(
-		"default",
-		"postgres",
-		"postgres://"+
-			pgUser+":"+
-			pgPass+"@"+
-			pgHost+":"+
-			pgPort+"/"+
-			pgDb+
-			"?sslmode=disable&search_path="+
-			pgSchema,
+	// 🔹 Modo de ejecución
+	if runMode != "" {
+		beego.BConfig.RunMode = runMode
+	}
+
+	// 🔹 Puerto HTTP
+	if httpPort != "" {
+		if port, err := strconv.Atoi(httpPort); err == nil {
+			beego.BConfig.Listen.HTTPPort = port
+		}
+	}
+
+	// 🔹 Conexión PostgreSQL
+	sqlConn := fmt.Sprintf(
+		"postgres://%s:%s@%s:%s/%s?sslmode=disable&search_path=%s",
+		pgUser, pgPass, pgHost, pgPort, pgDb, pgSchema,
 	)
 
+	fmt.Println("PostgreSQL:", sqlConn)
+
+	// 🔹 Registrar DB
+	orm.RegisterDataBase("default", "postgres", sqlConn)
+
+	// 🔹 Swagger
 	if beego.BConfig.RunMode == "dev" {
 		beego.BConfig.WebConfig.DirectoryIndex = true
 		beego.BConfig.WebConfig.StaticDir["/swagger"] = "swagger"
 	}
 
+	// 🔹 CORS
 	beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
 		AllowAllOrigins: true,
-		AllowMethods:    []string{"PUT", "PATCH", "GET", "POST", "OPTIONS", "DELETE"},
+		AllowMethods:    []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
 		AllowHeaders: []string{
 			"Origin",
-			"X-Requested-With",
 			"Content-Type",
 			"Accept",
 			"Authorization",
-			"X-CsrfToken",
 		},
 		ExposeHeaders:    []string{"Content-Length"},
 		AllowCredentials: true,
 	}))
 
+	// 🔹 Iniciar servidor
 	beego.Run()
 }
