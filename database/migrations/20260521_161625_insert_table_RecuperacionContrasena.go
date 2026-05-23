@@ -19,11 +19,11 @@ func init() {
 
 // Run the migrations
 func (m *InsertTableRecuperacionContrasena_20260521_161625) Up() {
-	m.SQL("INSERT INTO usuario_seguridad.RecuperacionContrasena (id_usuario, token, codigo, usado, fecha_expiracion) VALUES ('3', 'tkn_valentina_abc123xyz', '847201', 'true', '2025-04-10 12:00:00')")
+	m.SQL("INSERT INTO usuario_seguridad.recuperacion_contrasena (id_usuario, token, codigo, usado, fecha_expiracion) VALUES ('1', 'tkn_valentina_abc123xyz', '847201', 'true', '2025-04-10 12:00:00')")
 }
 
 // Reverse the migrations
 func (m *InsertTableRecuperacionContrasena_20260521_161625) Down() {
-	m.SQL("DELETE FROM usuario_seguridad.RecuperacionContrasena WHERE token='tkn_valentina_abc123xyz'") 
+	m.SQL("DELETE FROM usuario_seguridad.recuperacion_contrasena WHERE token='tkn_valentina_abc123xyz'") 
 
 }
