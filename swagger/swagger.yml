@@ -1,0 +1,631 @@
+swagger: "2.0"
+info:
+  title: Xchango Transacciones API
+  description: |
+    API para el esquema Transacciones_comunicacion
+  version: 1.0.0
+  termsOfService: http://beego.me/
+  contact:
+    email: astaxie@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+basePath: /v1
+paths:
+  /Calificacion/:
+    get:
+      tags:
+      - Calificacion
+      description: |-
+        get Calificacion
+        <br>
+      operationId: CalificacionController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Calificacion'
+        "403":
+          description: ""
+    post:
+      tags:
+      - Calificacion
+      description: |-
+        create Calificacion
+        <br>
+      operationId: CalificacionController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Calificacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Calificacion'
+      responses:
+        "201":
+          description: '{int} models.Calificacion'
+        "403":
+          description: body is empty
+  /Calificacion/{id}:
+    get:
+      tags:
+      - Calificacion
+      description: |-
+        get Calificacion by id
+        <br>
+      operationId: CalificacionController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Calificacion'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - Calificacion
+      description: |-
+        update the Calificacion
+        <br>
+      operationId: CalificacionController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Calificacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Calificacion'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Calificacion'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - Calificacion
+      description: |-
+        delete the Calificacion
+        <br>
+      operationId: CalificacionController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /ContactoWhatsApp/:
+    get:
+      tags:
+      - ContactoWhatsApp
+      description: |-
+        get ContactoWhatsApp
+        <br>
+      operationId: ContactoWhatsAppController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ContactoWhatsApp'
+        "403":
+          description: ""
+    post:
+      tags:
+      - ContactoWhatsApp
+      description: |-
+        create ContactoWhatsApp
+        <br>
+      operationId: ContactoWhatsAppController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for ContactoWhatsApp content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ContactoWhatsApp'
+      responses:
+        "201":
+          description: '{int} models.ContactoWhatsApp'
+        "403":
+          description: body is empty
+  /ContactoWhatsApp/{id}:
+    get:
+      tags:
+      - ContactoWhatsApp
+      description: |-
+        get ContactoWhatsApp by id
+        <br>
+      operationId: ContactoWhatsAppController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ContactoWhatsApp'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - ContactoWhatsApp
+      description: |-
+        update the ContactoWhatsApp
+        <br>
+      operationId: ContactoWhatsAppController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for ContactoWhatsApp content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ContactoWhatsApp'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ContactoWhatsApp'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - ContactoWhatsApp
+      description: |-
+        delete the ContactoWhatsApp
+        <br>
+      operationId: ContactoWhatsAppController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /Intercambio/:
+    get:
+      tags:
+      - Intercambio
+      description: |-
+        get Intercambio
+        <br>
+      operationId: IntercambioController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Intercambio'
+        "403":
+          description: ""
+    post:
+      tags:
+      - Intercambio
+      description: |-
+        create Intercambio
+        <br>
+      operationId: IntercambioController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Intercambio content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Intercambio'
+      responses:
+        "201":
+          description: '{int} models.Intercambio'
+        "403":
+          description: body is empty
+  /Intercambio/{id}:
+    get:
+      tags:
+      - Intercambio
+      description: |-
+        get Intercambio by id
+        <br>
+      operationId: IntercambioController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Intercambio'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - Intercambio
+      description: |-
+        update the Intercambio
+        <br>
+      operationId: IntercambioController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Intercambio content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Intercambio'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Intercambio'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - Intercambio
+      description: |-
+        delete the Intercambio
+        <br>
+      operationId: IntercambioController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /Reporte/:
+    get:
+      tags:
+      - Reporte
+      description: |-
+        get Reporte
+        <br>
+      operationId: ReporteController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Reporte'
+        "403":
+          description: ""
+    post:
+      tags:
+      - Reporte
+      description: |-
+        create Reporte
+        <br>
+      operationId: ReporteController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Reporte content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Reporte'
+      responses:
+        "201":
+          description: '{int} models.Reporte'
+        "403":
+          description: body is empty
+  /Reporte/{id}:
+    get:
+      tags:
+      - Reporte
+      description: |-
+        get Reporte by id
+        <br>
+      operationId: ReporteController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Reporte'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - Reporte
+      description: |-
+        update the Reporte
+        <br>
+      operationId: ReporteController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Reporte content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Reporte'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Reporte'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - Reporte
+      description: |-
+        delete the Reporte
+        <br>
+      operationId: ReporteController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+definitions:
+  models.Calificacion:
+    title: Calificacion
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      Comentario:
+        type: string
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      IdIntercambio:
+        type: integer
+        format: int64
+      IdUsuarioCalifica:
+        type: integer
+        format: int64
+      IdUsuarioCalificado:
+        type: integer
+        format: int64
+      Puntuacion:
+        type: integer
+        format: int64
+  models.ContactoWhatsApp:
+    title: ContactoWhatsApp
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      IdPublicacion:
+        type: integer
+        format: int64
+      IdUsuarioInteresado:
+        type: integer
+        format: int64
+      IdUsuarioPropietario:
+        type: integer
+        format: int64
+  models.Intercambio:
+    title: Intercambio
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      Estado:
+        type: string
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      IdPublicacion:
+        type: integer
+        format: int64
+      IdUsuarioInteresado:
+        type: integer
+        format: int64
+      MensajeInicial:
+        type: string
+  models.Reporte:
+    title: Reporte
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      Descripcion:
+        type: string
+      Estado:
+        type: string
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      IdPublicacion:
+        type: integer
+        format: int64
+      IdUsuario:
+        type: integer
+        format: int64
+tags:
+- name: Intercambio
+  description: |
+    IntercambioController operations for Intercambio
+- name: ContactoWhatsApp
+  description: |
+    ContactoWhatsAppController operations for ContactoWhatsApp
+- name: Calificacion
+  description: |
+    CalificacionController operations for Calificacion
+- name: Reporte
+  description: |
+    ReporteController operations for Reporte
