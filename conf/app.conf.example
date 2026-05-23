@@ -1,0 +1,14 @@
+appname = Xchango_APIS_CRUD
+httpport = ${XCHANGO_HTTP_PORT}
+runmode = ${XCHANGO_RUN_MODE}
+autorender = false
+copyrequestbody = true
+EnableDocs = true
+
+# Definicion de variables de entorno DB
+PGuser= ${XCHANGO_PGUSER}
+PGpass= ${XCHANGO_PGPASS}
+PGhost= ${XCHANGO_PGHOST}
+PGport= ${XCHANGO_PGPORT}
+PGdb= ${XCHANGO_PGDB}
+PGschema= ${XCHANGO_PGSCHEMA}
