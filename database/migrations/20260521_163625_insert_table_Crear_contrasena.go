@@ -19,12 +19,12 @@ func init() {
 
 // Run the migrations
 func (m *InsertTableCrearContrasena_20260521_163625) Up() {
-	m.SQL("INSERT INTO usuario_seguridad.crear_contrasena (id_usuario, contrasena, confirmar_contrasena) VALUES (1, 'Sofia@2025!', 'Sofia@2025!')")
+	m.SQL("INSERT INTO usuario_seguridad.Crear_contrasena (id_usuario, contrasena, confirmar_contrasena) VALUES (1, 'Sofia@2025!', 'Sofia@2025!')")
 
 }
 
 // Reverse the migrations
 func (m *InsertTableCrearContrasena_20260521_163625) Down() {
-	m.SQL("DELETE FROM usuario_seguridad.crear_contrasena WHERE contrasena='Sofia@2025!'") 
+	m.SQL("DELETE FROM usuario_seguridad.Crear_contrasena WHERE contrasena='Sofia@2025!'") 
 
 }

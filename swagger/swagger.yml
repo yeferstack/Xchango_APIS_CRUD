@@ -262,10 +262,10 @@ paths:
           description: '{string} delete success!'
         "403":
           description: id is empty
-  /HistorialContrasena/:
+  /Historial_contrasena/:
     get:
       tags:
-      - HistorialContrasena
+      - Historial_contrasena
       description: |-
         get HistorialContrasena
         <br>
@@ -305,7 +305,7 @@ paths:
           description: ""
     post:
       tags:
-      - HistorialContrasena
+      - Historial_contrasena
       description: |-
         create HistorialContrasena
         <br>
@@ -322,10 +322,10 @@ paths:
           description: '{int} models.HistorialContrasena'
         "403":
           description: body is empty
-  /HistorialContrasena/{id}:
+  /Historial_contrasena/{id}:
     get:
       tags:
-      - HistorialContrasena
+      - Historial_contrasena
       description: |-
         get HistorialContrasena by id
         <br>
@@ -345,7 +345,7 @@ paths:
           description: :id is empty
     put:
       tags:
-      - HistorialContrasena
+      - Historial_contrasena
       description: |-
         update the HistorialContrasena
         <br>
@@ -371,7 +371,7 @@ paths:
           description: :id is not int
     delete:
       tags:
-      - HistorialContrasena
+      - Historial_contrasena
       description: |-
         delete the HistorialContrasena
         <br>
@@ -387,10 +387,10 @@ paths:
           description: '{string} delete success!'
         "403":
           description: id is empty
-  /IntentoLogin/:
+  /Intento_login/:
     get:
       tags:
-      - IntentoLogin
+      - Intento_login
       description: |-
         get IntentoLogin
         <br>
@@ -430,7 +430,7 @@ paths:
           description: ""
     post:
       tags:
-      - IntentoLogin
+      - Intento_login
       description: |-
         create IntentoLogin
         <br>
@@ -447,10 +447,10 @@ paths:
           description: '{int} models.IntentoLogin'
         "403":
           description: body is empty
-  /IntentoLogin/{id}:
+  /Intento_login/{id}:
     get:
       tags:
-      - IntentoLogin
+      - Intento_login
       description: |-
         get IntentoLogin by id
         <br>
@@ -470,7 +470,7 @@ paths:
           description: :id is empty
     put:
       tags:
-      - IntentoLogin
+      - Intento_login
       description: |-
         update the IntentoLogin
         <br>
@@ -496,7 +496,7 @@ paths:
           description: :id is not int
     delete:
       tags:
-      - IntentoLogin
+      - Intento_login
       description: |-
         delete the IntentoLogin
         <br>
@@ -637,10 +637,10 @@ paths:
           description: '{string} delete success!'
         "403":
           description: id is empty
-  /RecuperacionContrasena/:
+  /Recuperacion_contrasena/:
     get:
       tags:
-      - RecuperacionContrasena
+      - Recuperacion_contrasena
       description: |-
         get RecuperacionContrasena
         <br>
@@ -680,7 +680,7 @@ paths:
           description: ""
     post:
       tags:
-      - RecuperacionContrasena
+      - Recuperacion_contrasena
       description: |-
         create RecuperacionContrasena
         <br>
@@ -697,10 +697,10 @@ paths:
           description: '{int} models.RecuperacionContrasena'
         "403":
           description: body is empty
-  /RecuperacionContrasena/{id}:
+  /Recuperacion_contrasena/{id}:
     get:
       tags:
-      - RecuperacionContrasena
+      - Recuperacion_contrasena
       description: |-
         get RecuperacionContrasena by id
         <br>
@@ -720,7 +720,7 @@ paths:
           description: :id is empty
     put:
       tags:
-      - RecuperacionContrasena
+      - Recuperacion_contrasena
       description: |-
         update the RecuperacionContrasena
         <br>
@@ -746,7 +746,7 @@ paths:
           description: :id is not int
     delete:
       tags:
-      - RecuperacionContrasena
+      - Recuperacion_contrasena
       description: |-
         delete the RecuperacionContrasena
         <br>
@@ -1231,16 +1231,16 @@ tags:
 - name: Crear_contrasena
   description: |
     CrearContrasenaController operations for CrearContrasena
-- name: HistorialContrasena
+- name: Historial_contrasena
   description: |
     HistorialContrasenaController operations for HistorialContrasena
-- name: RecuperacionContrasena
+- name: Recuperacion_contrasena
   description: |
     RecuperacionContrasenaController operations for RecuperacionContrasena
 - name: Sesion
   description: |
     SesionController operations for Sesion
-- name: IntentoLogin
+- name: Intento_login
   description: |
     IntentoLoginController operations for IntentoLogin
 - name: Perfil

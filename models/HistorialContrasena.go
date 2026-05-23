@@ -21,7 +21,7 @@ type HistorialContrasena struct {
 }
 
 func (t *HistorialContrasena) TableName() string {
-	return "HistorialContrasena"
+	return "Historial_contrasena"
 }
 
 func init() {

@@ -19,12 +19,12 @@ func init() {
 
 // Run the migrations
 func (m *InsertTableUsuario_20260521_152942) Up() {
-	m.SQL("INSERT INTO usuario_seguridad.usuario (correo, correo_verificado) VALUES ('sofia.ramirez@gmail.com', 'true')")
+	m.SQL("INSERT INTO usuario_seguridad.Usuario (correo, correo_verificado) VALUES ('sofia.ramirez@gmail.com', 'true')")
 
 }
 
 // Reverse the migrations
 func (m *InsertTableUsuario_20260521_152942) Down() {
-	m.SQL("DELETE FROM usuario_seguridad.usuario WHERE correo='sofia.ramirez@gmail.com'") 
+	m.SQL("DELETE FROM usuario_seguridad.Usuario WHERE correo='sofia.ramirez@gmail.com'") 
 
 }

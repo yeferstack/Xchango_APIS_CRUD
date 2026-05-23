@@ -34,13 +34,13 @@ func init() {
 			),
 		),
 
-		beego.NSNamespace("/HistorialContrasena",
+		beego.NSNamespace("/Historial_contrasena",
 			beego.NSInclude(
 				&controllers.HistorialContrasenaController{},
 			),
 		),
 
-		beego.NSNamespace("/RecuperacionContrasena",
+		beego.NSNamespace("/Recuperacion_contrasena",
 			beego.NSInclude(
 				&controllers.RecuperacionContrasenaController{},
 			),
@@ -52,7 +52,7 @@ func init() {
 			),
 		),
 
-		beego.NSNamespace("/IntentoLogin",
+		beego.NSNamespace("/Intento_login",
 			beego.NSInclude(
 				&controllers.IntentoLoginController{},
 			),

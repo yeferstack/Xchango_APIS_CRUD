@@ -24,7 +24,7 @@ type IntentoLogin struct {
 }
 
 func (t *IntentoLogin) TableName() string {
-	return "IntentoLogin"
+	return "Intento_login"
 }
 
 func init() {

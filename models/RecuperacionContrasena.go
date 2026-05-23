@@ -23,7 +23,7 @@ type RecuperacionContrasena struct {
 }
 
 func (t *RecuperacionContrasena) TableName() string {
-	return "RecuperacionContrasena"
+	return "Recuperacion_contrasena"
 }
 
 func init() {

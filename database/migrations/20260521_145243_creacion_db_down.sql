@@ -1,10 +1,10 @@
-DROP TABLE IF EXISTS usuario_seguridad.crear_contrasena;
-DROP TABLE IF EXISTS usuario_seguridad.credenciales;
-DROP TABLE IF EXISTS usuario_seguridad.historial_contrasena;
-DROP TABLE IF EXISTS usuario_seguridad.intento_login;
-DROP TABLE IF EXISTS usuario_seguridad.perfil;
-DROP TABLE IF EXISTS usuario_seguridad.recuperacion_contrasena;
-DROP TABLE IF EXISTS usuario_seguridad.sesion;
-DROP TABLE IF EXISTS usuario_seguridad.usuario;
+DROP TABLE IF EXISTS usuario_seguridad.Crear_contrasena;
+DROP TABLE IF EXISTS usuario_seguridad.Credenciales;
+DROP TABLE IF EXISTS usuario_seguridad.Historial_contrasena;
+DROP TABLE IF EXISTS usuario_seguridad.Intento_login;
+DROP TABLE IF EXISTS usuario_seguridad.Perfil;
+DROP TABLE IF EXISTS usuario_seguridad.Recuperacion_contrasena;
+DROP TABLE IF EXISTS usuario_seguridad.Sesion;
+DROP TABLE IF EXISTS usuario_seguridad.Usuario;
 
 DROP SCHEMA IF EXISTS usuario_seguridad;

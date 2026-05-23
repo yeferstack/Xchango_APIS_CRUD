@@ -361,10 +361,10 @@
                 }
             }
         },
-        "/HistorialContrasena/": {
+        "/Historial_contrasena/": {
             "get": {
                 "tags": [
-                    "HistorialContrasena"
+                    "Historial_contrasena"
                 ],
                 "description": "get HistorialContrasena\n\u003cbr\u003e",
                 "operationId": "HistorialContrasenaController.Get All",
@@ -420,7 +420,7 @@
             },
             "post": {
                 "tags": [
-                    "HistorialContrasena"
+                    "Historial_contrasena"
                 ],
                 "description": "create HistorialContrasena\n\u003cbr\u003e",
                 "operationId": "HistorialContrasenaController.Post",
@@ -445,10 +445,10 @@
                 }
             }
         },
-        "/HistorialContrasena/{id}": {
+        "/Historial_contrasena/{id}": {
             "get": {
                 "tags": [
-                    "HistorialContrasena"
+                    "Historial_contrasena"
                 ],
                 "description": "get HistorialContrasena by id\n\u003cbr\u003e",
                 "operationId": "HistorialContrasenaController.Get One",
@@ -475,7 +475,7 @@
             },
             "put": {
                 "tags": [
-                    "HistorialContrasena"
+                    "Historial_contrasena"
                 ],
                 "description": "update the HistorialContrasena\n\u003cbr\u003e",
                 "operationId": "HistorialContrasenaController.Put",
@@ -511,7 +511,7 @@
             },
             "delete": {
                 "tags": [
-                    "HistorialContrasena"
+                    "Historial_contrasena"
                 ],
                 "description": "delete the HistorialContrasena\n\u003cbr\u003e",
                 "operationId": "HistorialContrasenaController.Delete",
@@ -534,10 +534,10 @@
                 }
             }
         },
-        "/IntentoLogin/": {
+        "/Intento_login/": {
             "get": {
                 "tags": [
-                    "IntentoLogin"
+                    "Intento_login"
                 ],
                 "description": "get IntentoLogin\n\u003cbr\u003e",
                 "operationId": "IntentoLoginController.Get All",
@@ -593,7 +593,7 @@
             },
             "post": {
                 "tags": [
-                    "IntentoLogin"
+                    "Intento_login"
                 ],
                 "description": "create IntentoLogin\n\u003cbr\u003e",
                 "operationId": "IntentoLoginController.Post",
@@ -618,10 +618,10 @@
                 }
             }
         },
-        "/IntentoLogin/{id}": {
+        "/Intento_login/{id}": {
             "get": {
                 "tags": [
-                    "IntentoLogin"
+                    "Intento_login"
                 ],
                 "description": "get IntentoLogin by id\n\u003cbr\u003e",
                 "operationId": "IntentoLoginController.Get One",
@@ -648,7 +648,7 @@
             },
             "put": {
                 "tags": [
-                    "IntentoLogin"
+                    "Intento_login"
                 ],
                 "description": "update the IntentoLogin\n\u003cbr\u003e",
                 "operationId": "IntentoLoginController.Put",
@@ -684,7 +684,7 @@
             },
             "delete": {
                 "tags": [
-                    "IntentoLogin"
+                    "Intento_login"
                 ],
                 "description": "delete the IntentoLogin\n\u003cbr\u003e",
                 "operationId": "IntentoLoginController.Delete",
@@ -880,10 +880,10 @@
                 }
             }
         },
-        "/RecuperacionContrasena/": {
+        "/Recuperacion_contrasena/": {
             "get": {
                 "tags": [
-                    "RecuperacionContrasena"
+                    "Recuperacion_contrasena"
                 ],
                 "description": "get RecuperacionContrasena\n\u003cbr\u003e",
                 "operationId": "RecuperacionContrasenaController.Get All",
@@ -939,7 +939,7 @@
             },
             "post": {
                 "tags": [
-                    "RecuperacionContrasena"
+                    "Recuperacion_contrasena"
                 ],
                 "description": "create RecuperacionContrasena\n\u003cbr\u003e",
                 "operationId": "RecuperacionContrasenaController.Post",
@@ -964,10 +964,10 @@
                 }
             }
         },
-        "/RecuperacionContrasena/{id}": {
+        "/Recuperacion_contrasena/{id}": {
             "get": {
                 "tags": [
-                    "RecuperacionContrasena"
+                    "Recuperacion_contrasena"
                 ],
                 "description": "get RecuperacionContrasena by id\n\u003cbr\u003e",
                 "operationId": "RecuperacionContrasenaController.Get One",
@@ -994,7 +994,7 @@
             },
             "put": {
                 "tags": [
-                    "RecuperacionContrasena"
+                    "Recuperacion_contrasena"
                 ],
                 "description": "update the RecuperacionContrasena\n\u003cbr\u003e",
                 "operationId": "RecuperacionContrasenaController.Put",
@@ -1030,7 +1030,7 @@
             },
             "delete": {
                 "tags": [
-                    "RecuperacionContrasena"
+                    "Recuperacion_contrasena"
                 ],
                 "description": "delete the RecuperacionContrasena\n\u003cbr\u003e",
                 "operationId": "RecuperacionContrasenaController.Delete",
@@ -1712,11 +1712,11 @@
             "description": "CrearContrasenaController operations for CrearContrasena\n"
         },
         {
-            "name": "HistorialContrasena",
+            "name": "Historial_contrasena",
             "description": "HistorialContrasenaController operations for HistorialContrasena\n"
         },
         {
-            "name": "RecuperacionContrasena",
+            "name": "Recuperacion_contrasena",
             "description": "RecuperacionContrasenaController operations for RecuperacionContrasena\n"
         },
         {
@@ -1724,7 +1724,7 @@
             "description": "SesionController operations for Sesion\n"
         },
         {
-            "name": "IntentoLogin",
+            "name": "Intento_login",
             "description": "IntentoLoginController operations for IntentoLogin\n"
         },
         {

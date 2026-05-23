@@ -79,17 +79,21 @@ func (c *UsuarioController) Post() {
 // @Failure 403 :id is empty
 // @router /:id [get]
 func (c *UsuarioController) GetOne() {
-	idStr := c.Ctx.Input.Param(":id")
-	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetUsuarioById(id)
-	if err != nil {
-		c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": "Error en el servicio GetOne: La solicitud contiene un parametro incorrecto o no existe ningun registro"}
-	} else {
-		c.Data["json"] = map[string]interface{}{"success": true, "status": 200, "Message": "Peticion exitosa", "data": v}
-	}
-	c.ServeJSON()
+    idStr := c.Ctx.Input.Param(":id")
+    id, _ := strconv.Atoi(idStr)
+    v, err := models.GetUsuarioById(id)
+    if err != nil {
+        c.Data["json"] = map[string]interface{}{
+            "success": false,
+            "status":  400,
+            "Message": "Error en el servicio GetOne",
+            "error":   err.Error(), 
+        }
+    } else {
+        c.Data["json"] = map[string]interface{}{"success": true, "status": 200, "Message": "Peticion exitosa", "data": v}
+    }
+    c.ServeJSON()
 }
-
 // GetAll ...
 // @Title Get All
 // @Description get Usuario

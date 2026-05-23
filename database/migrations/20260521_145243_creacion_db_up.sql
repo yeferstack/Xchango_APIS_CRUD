@@ -1,6 +1,6 @@
 CREATE SCHEMA IF NOT EXISTS usuario_seguridad;
 
-CREATE TABLE usuario_seguridad.usuario (
+CREATE TABLE usuario_seguridad.Usuario (
     id_usuario         SERIAL PRIMARY KEY,
     correo             VARCHAR(100) UNIQUE NOT NULL,
     correo_verificado  BOOLEAN NOT NULL DEFAULT FALSE,
@@ -9,7 +9,7 @@ CREATE TABLE usuario_seguridad.usuario (
     fecha_modificacion TIMESTAMP NOT NULL DEFAULT now()
 );
 
-CREATE TABLE usuario_seguridad.credenciales (
+CREATE TABLE usuario_seguridad.Credenciales (
     id_usuario         INT PRIMARY KEY,
     contrasena_hash    TEXT NOT NULL,
     intentos_fallidos  INT NOT NULL DEFAULT 0,
@@ -20,11 +20,11 @@ CREATE TABLE usuario_seguridad.credenciales (
     fecha_modificacion TIMESTAMP NOT NULL DEFAULT now(),
     -- FK interna 
     CONSTRAINT fk_credenciales_usuario
-        FOREIGN KEY (id_usuario) REFERENCES usuario_seguridad.usuario(id_usuario)
+        FOREIGN KEY (id_usuario) REFERENCES usuario_seguridad.Usuario(id_usuario)
         ON DELETE CASCADE
 );
 
-CREATE TABLE usuario_seguridad.crear_contrasena (
+CREATE TABLE usuario_seguridad.Crear_contrasena (
     id_usuario           INT PRIMARY KEY,
     contrasena           TEXT NOT NULL,
     confirmar_contrasena TEXT NOT NULL,
@@ -33,11 +33,11 @@ CREATE TABLE usuario_seguridad.crear_contrasena (
     fecha_modificacion   TIMESTAMP NOT NULL DEFAULT now(),
     -- FK interna 
     CONSTRAINT fk_crear_contrasena_usuario
-        FOREIGN KEY (id_usuario) REFERENCES usuario_seguridad.usuario(id_usuario)
+        FOREIGN KEY (id_usuario) REFERENCES usuario_seguridad.Usuario(id_usuario)
         ON DELETE CASCADE
 );
 
-CREATE TABLE usuario_seguridad.historial_contrasena (
+CREATE TABLE usuario_seguridad.Historial_contrasena (
     id_historial       SERIAL PRIMARY KEY,
     id_usuario         INT NOT NULL,
     contrasena_hash    TEXT NOT NULL,
@@ -47,11 +47,11 @@ CREATE TABLE usuario_seguridad.historial_contrasena (
     fecha_modificacion TIMESTAMP NOT NULL DEFAULT now(),
     -- FK interna 
     CONSTRAINT fk_historialcontrasena_usuario
-        FOREIGN KEY (id_usuario) REFERENCES usuario_seguridad.usuario(id_usuario)
+        FOREIGN KEY (id_usuario) REFERENCES usuario_seguridad.Usuario(id_usuario)
         ON DELETE CASCADE
 );
 
-CREATE TABLE usuario_seguridad.recuperacion_contrasena (
+CREATE TABLE usuario_seguridad.Recuperacion_contrasena (
     id_recuperacion    SERIAL PRIMARY KEY,
     id_usuario         INT NOT NULL,
     token              TEXT NOT NULL,
@@ -63,11 +63,11 @@ CREATE TABLE usuario_seguridad.recuperacion_contrasena (
     fecha_modificacion TIMESTAMP NOT NULL DEFAULT now(),
     -- FK interna 
     CONSTRAINT fk_recuperacioncontrasena_usuario
-        FOREIGN KEY (id_usuario) REFERENCES usuario_seguridad.usuario(id_usuario)
+        FOREIGN KEY (id_usuario) REFERENCES usuario_seguridad.Usuario(id_usuario)
         ON DELETE CASCADE
 );
 
-CREATE TABLE usuario_seguridad.sesion (
+CREATE TABLE usuario_seguridad.Sesion (
     id_sesion          SERIAL PRIMARY KEY,
     id_usuario         INT NOT NULL,
     token_sesion       TEXT NOT NULL,
@@ -81,11 +81,11 @@ CREATE TABLE usuario_seguridad.sesion (
     fecha_modificacion TIMESTAMP NOT NULL DEFAULT now(),
     -- FK interna 
     CONSTRAINT fk_sesion_usuario
-        FOREIGN KEY (id_usuario) REFERENCES usuario_seguridad.usuario(id_usuario)
+        FOREIGN KEY (id_usuario) REFERENCES usuario_seguridad.Usuario(id_usuario)
         ON DELETE CASCADE
 );
 
-CREATE TABLE usuario_seguridad.intento_login (
+CREATE TABLE usuario_seguridad.Intento_login (
     id_intento         SERIAL PRIMARY KEY,
     id_usuario         INT,
     email_ingresado    VARCHAR(100),
@@ -98,11 +98,11 @@ CREATE TABLE usuario_seguridad.intento_login (
     fecha_modificacion TIMESTAMP NOT NULL DEFAULT now(),
     -- FK interna 
     CONSTRAINT fk_intentologin_usuario
-        FOREIGN KEY (id_usuario) REFERENCES usuario_seguridad.usuario(id_usuario)
+        FOREIGN KEY (id_usuario) REFERENCES usuario_seguridad.Usuario(id_usuario)
         ON DELETE CASCADE
 );
 
-CREATE TABLE usuario_seguridad.perfil (
+CREATE TABLE usuario_seguridad.Perfil (
     id_perfil          SERIAL PRIMARY KEY,
     id_usuario         INT NOT NULL UNIQUE,
     nombre             VARCHAR(100) NOT NULL,
@@ -120,6 +120,6 @@ CREATE TABLE usuario_seguridad.perfil (
     fecha_modificacion TIMESTAMP NOT NULL DEFAULT now(),
     -- FK interna 
     CONSTRAINT fk_perfil_usuario
-        FOREIGN KEY (id_usuario) REFERENCES usuario_seguridad.usuario(id_usuario)
+        FOREIGN KEY (id_usuario) REFERENCES usuario_seguridad.Usuario(id_usuario)
         ON DELETE CASCADE
 );
