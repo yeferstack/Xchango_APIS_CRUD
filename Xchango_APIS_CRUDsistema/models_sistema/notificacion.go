@@ -1,4 +1,4 @@
-package models
+package models_sistema
 
 import (
 	"errors"
@@ -10,46 +10,56 @@ import (
 	"github.com/beego/beego/v2/client/orm"
 )
 
-type Administradorpermiso struct {
-	Id                int           `orm:"column(id);pk"`
-	IdAdmin           *Administrador `orm:"column(id_admin);rel(fk)"`
-	IdPermiso         *Permiso      `orm:"column(id_permiso);rel(fk)"`
-	Activo            bool          `orm:"column(activo)"`
-	FechaCreacion     time.Time     `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
-	FechaModificacion time.Time     `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
+type Notificacion struct {
+	Id                int       `orm:"column(id_notificacion);pk"`
+	IdUsuario         int       `orm:"column(id_usuario)"`
+	Titulo            string    `orm:"column(titulo)"`
+	Mensaje           string    `orm:"column(mensaje)"`
+	Tipo              string    `orm:"column(tipo)"`
+	IdReferencia      int       `orm:"column(id_referencia);null"`
+	TipoReferencia    string    `orm:"column(tipo_referencia);null"`
+	Leido             bool      `orm:"column(leido)"`
+	Activo            bool      `orm:"column(activo)"`
+	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
+	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
 }
 
-func (t *Administradorpermiso) TableName() string {
-	return "administradorpermiso"
+func (t *Notificacion) TableName() string {
+	return "notificacion"
 }
 
 func init() {
-	orm.RegisterModel(new(Administradorpermiso))
+	orm.RegisterModel(new(Notificacion))
 }
 
-func AddAdministradorpermiso(m *Administradorpermiso) (id int64, err error) {
+// AddNotificacion insert a new Notificacion into database and returns
+// last inserted Id on success.
+func AddNotificacion(m *Notificacion) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-func GetAdministradorpermisoById(id int) (v *Administradorpermiso, err error) {
+// GetNotificacionById retrieves Notificacion by Id. Returns error if
+// Id doesn't exist
+func GetNotificacionById(id int) (v *Notificacion, err error) {
 	o := orm.NewOrm()
-	v = &Administradorpermiso{Id: id}
+	v = &Notificacion{Id: id}
 	if err = o.Read(v); err == nil {
-		o.LoadRelated(v, "IdAdmin")
-		o.LoadRelated(v, "IdPermiso")
 		return v, nil
 	}
 	return nil, err
 }
 
-func GetAllAdministradorpermiso(query map[string]string, fields []string, sortby []string, order []string,
+// GetAllNotificacion retrieves all Notificacion matches certain condition. Returns empty list if
+// no records exist
+func GetAllNotificacion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(Administradorpermiso)).RelatedSel()
-
+	qs := o.QueryTable(new(Notificacion))
+	// query k=v
 	for k, v := range query {
+		// rewrite dot-notation to Object__Attribute
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
 			qs = qs.Filter(k, (v == "true" || v == "1"))
@@ -57,10 +67,11 @@ func GetAllAdministradorpermiso(query map[string]string, fields []string, sortby
 			qs = qs.Filter(k, v)
 		}
 	}
-
+	// order by:
 	var sortFields []string
 	if len(sortby) != 0 {
 		if len(sortby) == len(order) {
+			// 1) for each sort field, there is an associated order
 			for i, v := range sortby {
 				orderby := ""
 				if order[i] == "desc" {
@@ -74,6 +85,7 @@ func GetAllAdministradorpermiso(query map[string]string, fields []string, sortby
 			}
 			qs = qs.OrderBy(sortFields...)
 		} else if len(sortby) != len(order) && len(order) == 1 {
+			// 2) there is exactly one order, all the sorted fields will be sorted by this order
 			for _, v := range sortby {
 				orderby := ""
 				if order[0] == "desc" {
@@ -94,7 +106,7 @@ func GetAllAdministradorpermiso(query map[string]string, fields []string, sortby
 		}
 	}
 
-	var l []Administradorpermiso
+	var l []Notificacion
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -102,6 +114,7 @@ func GetAllAdministradorpermiso(query map[string]string, fields []string, sortby
 				ml = append(ml, v)
 			}
 		} else {
+			// trim unused fields
 			for _, v := range l {
 				m := make(map[string]interface{})
 				val := reflect.ValueOf(v)
@@ -116,9 +129,12 @@ func GetAllAdministradorpermiso(query map[string]string, fields []string, sortby
 	return nil, err
 }
 
-func UpdateAdministradorpermisoById(m *Administradorpermiso) (err error) {
+// UpdateNotificacion updates Notificacion by Id and returns error if
+// the record to be updated doesn't exist
+func UpdateNotificacionById(m *Notificacion) (err error) {
 	o := orm.NewOrm()
-	v := Administradorpermiso{Id: m.Id}
+	v := Notificacion{Id: m.Id}
+	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
 		if num, err = o.Update(m); err == nil {
@@ -128,12 +144,15 @@ func UpdateAdministradorpermisoById(m *Administradorpermiso) (err error) {
 	return
 }
 
-func DeleteAdministradorpermiso(id int) (err error) {
+// DeleteNotificacion deletes Notificacion by Id and returns error if
+// the record to be deleted doesn't exist
+func DeleteNotificacion(id int) (err error) {
 	o := orm.NewOrm()
-	v := Administradorpermiso{Id: id}
+	v := Notificacion{Id: id}
+	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&Administradorpermiso{Id: id}); err == nil {
+		if num, err = o.Delete(&Notificacion{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

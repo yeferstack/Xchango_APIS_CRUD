@@ -1,7 +1,7 @@
-package controllers
+package controllers_sistema
 
 import (
-	"Xchango_APIS_CRUD/models"
+	"Xchango_APIS_CRUD/models_sistema"
 	"encoding/json"
 	"errors"
 	"strconv"
@@ -10,13 +10,13 @@ import (
 	beego "github.com/beego/beego/v2/server/web"
 )
 
-// PermisoController operations for Permiso
-type PermisoController struct {
+// AdministradorController operations for Administrador
+type AdministradorController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *PermisoController) URLMapping() {
+func (c *AdministradorController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -26,15 +26,15 @@ func (c *PermisoController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description create Permiso
-// @Param	body		body 	models.Permiso	true		"body for Permiso content"
-// @Success 201 {int} models.Permiso
+// @Description create Administrador
+// @Param	body		body 	models_sistema.Administrador	true		"body for Administrador content"
+// @Success 201 {int} models_sistema.Administrador
 // @Failure 403 body is empty
 // @router / [post]
-func (c *PermisoController) Post() {
-	var v models.Permiso
+func (c *AdministradorController) Post() {
+	var v models_sistema.Administrador
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddPermiso(&v); err == nil {
+		if _, err := models_sistema.AddAdministrador(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
@@ -48,15 +48,15 @@ func (c *PermisoController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description get Permiso by id
+// @Description get Administrador by id
 // @Param	id		path 	string	true		"The key for staticblock"
-// @Success 200 {object} models.Permiso
+// @Success 200 {object} models_sistema.Administrador
 // @Failure 403 :id is empty
 // @router /:id [get]
-func (c *PermisoController) GetOne() {
+func (c *AdministradorController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetPermisoById(id)
+	v, err := models_sistema.GetAdministradorById(id)
 	if err != nil {
 		c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": "Error en el servicio GetOne: La solicitud contiene un parametro incorrecto o no existe ningun registro"}
 	} else {
@@ -67,17 +67,17 @@ func (c *PermisoController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description get Permiso
+// @Description get Administrador
 // @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
 // @Param	fields	query	string	false	"Fields returned. e.g. col1,col2 ..."
 // @Param	sortby	query	string	false	"Sorted-by fields. e.g. col1,col2 ..."
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.Permiso
+// @Success 200 {object} models_sistema.Administrador
 // @Failure 403
 // @router / [get]
-func (c *PermisoController) GetAll() {
+func (c *AdministradorController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -85,27 +85,21 @@ func (c *PermisoController) GetAll() {
 	var limit int64 = 10
 	var offset int64
 
-	// fields: col1,col2,entity.col3
 	if v := c.GetString("fields"); v != "" {
 		fields = strings.Split(v, ",")
 	}
-	// limit: 10 (default is 10)
 	if v, err := c.GetInt64("limit"); err == nil {
 		limit = v
 	}
-	// offset: 0 (default is 0)
 	if v, err := c.GetInt64("offset"); err == nil {
 		offset = v
 	}
-	// sortby: col1,col2
 	if v := c.GetString("sortby"); v != "" {
 		sortby = strings.Split(v, ",")
 	}
-	// order: desc,asc
 	if v := c.GetString("order"); v != "" {
 		order = strings.Split(v, ",")
 	}
-	// query: k:v,k:v
 	if v := c.GetString("query"); v != "" {
 		for _, cond := range strings.Split(v, ",") {
 			kv := strings.SplitN(cond, ":", 2)
@@ -119,7 +113,7 @@ func (c *PermisoController) GetAll() {
 		}
 	}
 
-l, err := models.GetAllPermiso(query, fields, sortby, order, offset, limit)
+	l, err := models_sistema.GetAllAdministrador(query, fields, sortby, order, offset, limit)
 	if err != nil {
 		c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": "Error en el servicio GetAll: La solicitud contiene un parametro incorrecto o no existe ningun registro"}
 	} else {
@@ -130,18 +124,18 @@ l, err := models.GetAllPermiso(query, fields, sortby, order, offset, limit)
 
 // Put ...
 // @Title Put
-// @Description update the Permiso
+// @Description update the Administrador
 // @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.Permiso	true		"body for Permiso content"
-// @Success 200 {object} models.Permiso
+// @Param	body		body 	models_sistema.Administrador	true		"body for Administrador content"
+// @Success 200 {object} models_sistema.Administrador
 // @Failure 403 :id is not int
 // @router /:id [put]
-func (c *PermisoController) Put() {
+func (c *AdministradorController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.Permiso{Id: id}
+	v := models_sistema.Administrador{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdatePermisoById(&v); err == nil {
+		if err := models_sistema.UpdateAdministradorById(&v); err == nil {
 			c.Data["json"] = "OK"
 		} else {
 			c.Data["json"] = err.Error()
@@ -154,15 +148,15 @@ func (c *PermisoController) Put() {
 
 // Delete ...
 // @Title Delete
-// @Description delete the Permiso
+// @Description delete the Administrador
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 403 id is empty
 // @router /:id [delete]
-func (c *PermisoController) Delete() {
+func (c *AdministradorController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeletePermiso(id); err == nil {
+	if err := models_sistema.DeleteAdministrador(id); err == nil {
 		c.Data["json"] = "OK"
 	} else {
 		c.Data["json"] = err.Error()
