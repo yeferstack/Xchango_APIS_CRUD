@@ -1,4 +1,4 @@
-package models
+package models_sistema
 
 import (
 	"errors"
@@ -10,51 +10,49 @@ import (
 	"github.com/beego/beego/v2/client/orm"
 )
 
-type Permiso struct {
-	Id                int       `orm:"column(id_permiso);pk"`
-	Nombre            string    `orm:"column(nombre)"`
-	Descripcion       string    `orm:"column(descripcion);null"`
-	Activo            bool      `orm:"column(activo)"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
+type Administrador struct {
+	Id                int          `orm:"column(id_admin);pk;auto"`
+	IdUsuario         int          `orm:"column(id_usuario)"`
+	IdNivelacceso     *NivelAcceso `orm:"column(id_nivelacceso);rel(fk)"`
+	Activo            bool         `orm:"column(activo)"`
+	FechaAsignacion   time.Time    `orm:"column(fecha_asignacion);type(timestamp without time zone)"`
+	FechaCreacion     time.Time    `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
+	FechaModificacion time.Time    `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
 }
 
-func (t *Permiso) TableName() string {
-	return "permiso"
+func (t *Administrador) TableName() string {
+	return "administrador"
 }
 
 func init() {
-	orm.RegisterModel(new(Permiso))
+	orm.RegisterModel(new(Administrador))
 }
 
-// AddPermiso insert a new Permiso into database and returns
-// last inserted Id on success.
-func AddPermiso(m *Permiso) (id int64, err error) {
+func AddAdministrador(m *Administrador) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetPermisoById retrieves Permiso by Id. Returns error if
-// Id doesn't exist
-func GetPermisoById(id int) (v *Permiso, err error) {
+// GetAdministradorById: 
+func GetAdministradorById(id int) (v *Administrador, err error) {
 	o := orm.NewOrm()
-	v = &Permiso{Id: id}
+	v = &Administrador{Id: id}
 	if err = o.Read(v); err == nil {
+		o.LoadRelated(v, "IdNivelacceso") 
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllPermiso retrieves all Permiso matches certain condition. Returns empty list if
-// no records exist
-func GetAllPermiso(query map[string]string, fields []string, sortby []string, order []string,
+// GetAllAdministrador: 
+func GetAllAdministrador(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(Permiso))
-	// query k=v
+	// <-- LO ÚNICO AGREGADO AQUÍ (.RelatedSel())
+	qs := o.QueryTable(new(Administrador)).RelatedSel() 
+    
 	for k, v := range query {
-		// rewrite dot-notation to Object__Attribute
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
 			qs = qs.Filter(k, (v == "true" || v == "1"))
@@ -62,11 +60,10 @@ func GetAllPermiso(query map[string]string, fields []string, sortby []string, or
 			qs = qs.Filter(k, v)
 		}
 	}
-	// order by:
+
 	var sortFields []string
 	if len(sortby) != 0 {
 		if len(sortby) == len(order) {
-			// 1) for each sort field, there is an associated order
 			for i, v := range sortby {
 				orderby := ""
 				if order[i] == "desc" {
@@ -80,7 +77,6 @@ func GetAllPermiso(query map[string]string, fields []string, sortby []string, or
 			}
 			qs = qs.OrderBy(sortFields...)
 		} else if len(sortby) != len(order) && len(order) == 1 {
-			// 2) there is exactly one order, all the sorted fields will be sorted by this order
 			for _, v := range sortby {
 				orderby := ""
 				if order[0] == "desc" {
@@ -101,7 +97,7 @@ func GetAllPermiso(query map[string]string, fields []string, sortby []string, or
 		}
 	}
 
-	var l []Permiso
+	var l []Administrador
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -109,7 +105,6 @@ func GetAllPermiso(query map[string]string, fields []string, sortby []string, or
 				ml = append(ml, v)
 			}
 		} else {
-			// trim unused fields
 			for _, v := range l {
 				m := make(map[string]interface{})
 				val := reflect.ValueOf(v)
@@ -124,12 +119,9 @@ func GetAllPermiso(query map[string]string, fields []string, sortby []string, or
 	return nil, err
 }
 
-// UpdatePermiso updates Permiso by Id and returns error if
-// the record to be updated doesn't exist
-func UpdatePermisoById(m *Permiso) (err error) {
+func UpdateAdministradorById(m *Administrador) (err error) {
 	o := orm.NewOrm()
-	v := Permiso{Id: m.Id}
-	// ascertain id exists in the database
+	v := Administrador{Id: m.Id}
 	if err = o.Read(&v); err == nil {
 		var num int64
 		if num, err = o.Update(m); err == nil {
@@ -139,15 +131,12 @@ func UpdatePermisoById(m *Permiso) (err error) {
 	return
 }
 
-// DeletePermiso deletes Permiso by Id and returns error if
-// the record to be deleted doesn't exist
-func DeletePermiso(id int) (err error) {
+func DeleteAdministrador(id int) (err error) {
 	o := orm.NewOrm()
-	v := Permiso{Id: id}
-	// ascertain id exists in the database
+	v := Administrador{Id: id}
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&Permiso{Id: id}); err == nil {
+		if num, err = o.Delete(&Administrador{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

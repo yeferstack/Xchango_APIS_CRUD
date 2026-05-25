@@ -1,4 +1,4 @@
-package models
+package models_sistema
 
 import (
 	"errors"
@@ -10,53 +10,48 @@ import (
 	"github.com/beego/beego/v2/client/orm"
 )
 
-type Notificacion struct {
-	Id                int       `orm:"column(id_notificacion);pk"`
-	IdUsuario         int       `orm:"column(id_usuario)"`
-	Titulo            string    `orm:"column(titulo)"`
-	Mensaje           string    `orm:"column(mensaje)"`
-	Tipo              string    `orm:"column(tipo)"`
-	IdReferencia      int       `orm:"column(id_referencia);null"`
-	TipoReferencia    string    `orm:"column(tipo_referencia);null"`
-	Leido             bool      `orm:"column(leido)"`
+type Permiso struct {
+	Id                int       `orm:"column(id_permiso);pk"`
+	Nombre            string    `orm:"column(nombre)"`
+	Descripcion       string    `orm:"column(descripcion);null"`
 	Activo            bool      `orm:"column(activo)"`
 	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null;auto_now_add"`
 	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null;auto_now"`
 }
 
-func (t *Notificacion) TableName() string {
-	return "notificacion"
+func (t *Permiso) TableName() string {
+	return "permiso"
 }
 
 func init() {
-	orm.RegisterModel(new(Notificacion))
+	orm.RegisterModel(new(Permiso))
 }
 
-// AddNotificacion insert a new Notificacion into database and returns
+// AddPermiso insert a new Permiso into database and returns
 // last inserted Id on success.
-func AddNotificacion(m *Notificacion) (id int64, err error) {
+func AddPermiso(m *Permiso) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetNotificacionById retrieves Notificacion by Id. Returns error if
+// GetPermisoById retrieves Permiso by Id. Returns error if
 // Id doesn't exist
-func GetNotificacionById(id int) (v *Notificacion, err error) {
+func GetPermisoById(id int) (v *Permiso, err error) {
 	o := orm.NewOrm()
-	v = &Notificacion{Id: id}
+	v = &Permiso{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllNotificacion retrieves all Notificacion matches certain condition. Returns empty list if
+// GetAllPermiso retrieves all Permiso matches certain condition. Returns empty list if
 // no records exist
-func GetAllNotificacion(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllPermiso(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(Notificacion))
+	qs := o.QueryTable(new(Permiso))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -106,7 +101,7 @@ func GetAllNotificacion(query map[string]string, fields []string, sortby []strin
 		}
 	}
 
-	var l []Notificacion
+	var l []Permiso
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -129,11 +124,11 @@ func GetAllNotificacion(query map[string]string, fields []string, sortby []strin
 	return nil, err
 }
 
-// UpdateNotificacion updates Notificacion by Id and returns error if
+// UpdatePermiso updates Permiso by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateNotificacionById(m *Notificacion) (err error) {
+func UpdatePermisoById(m *Permiso) (err error) {
 	o := orm.NewOrm()
-	v := Notificacion{Id: m.Id}
+	v := Permiso{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -144,15 +139,15 @@ func UpdateNotificacionById(m *Notificacion) (err error) {
 	return
 }
 
-// DeleteNotificacion deletes Notificacion by Id and returns error if
+// DeletePermiso deletes Permiso by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteNotificacion(id int) (err error) {
+func DeletePermiso(id int) (err error) {
 	o := orm.NewOrm()
-	v := Notificacion{Id: id}
+	v := Permiso{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&Notificacion{Id: id}); err == nil {
+		if num, err = o.Delete(&Permiso{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

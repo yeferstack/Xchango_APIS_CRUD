@@ -1,4 +1,4 @@
-package routers
+package routers_sistema
 
 import (
 	beego "github.com/beego/beego/v2/server/web"
@@ -7,7 +7,7 @@ import (
 
 func init() {
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:AdministradorController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:AdministradorController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:AdministradorController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:AdministradorController"],
         beego.ControllerComments{
             Method: "Post",
             Router: `/`,
@@ -16,7 +16,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:AdministradorController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:AdministradorController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:AdministradorController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:AdministradorController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: `/`,
@@ -25,7 +25,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:AdministradorController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:AdministradorController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:AdministradorController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:AdministradorController"],
         beego.ControllerComments{
             Method: "GetOne",
             Router: `/:id`,
@@ -34,7 +34,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:AdministradorController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:AdministradorController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:AdministradorController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:AdministradorController"],
         beego.ControllerComments{
             Method: "Put",
             Router: `/:id`,
@@ -43,7 +43,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:AdministradorController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:AdministradorController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:AdministradorController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:AdministradorController"],
         beego.ControllerComments{
             Method: "Delete",
             Router: `/:id`,
@@ -52,7 +52,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:AdministradorpermisoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:AdministradorpermisoController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:AdministradorpermisoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:AdministradorpermisoController"],
         beego.ControllerComments{
             Method: "Post",
             Router: `/`,
@@ -61,7 +61,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:AdministradorpermisoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:AdministradorpermisoController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:AdministradorpermisoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:AdministradorpermisoController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: `/`,
@@ -70,7 +70,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:AdministradorpermisoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:AdministradorpermisoController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:AdministradorpermisoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:AdministradorpermisoController"],
         beego.ControllerComments{
             Method: "GetOne",
             Router: `/:id`,
@@ -79,7 +79,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:AdministradorpermisoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:AdministradorpermisoController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:AdministradorpermisoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:AdministradorpermisoController"],
         beego.ControllerComments{
             Method: "Put",
             Router: `/:id`,
@@ -88,7 +88,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:AdministradorpermisoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:AdministradorpermisoController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:AdministradorpermisoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:AdministradorpermisoController"],
         beego.ControllerComments{
             Method: "Delete",
             Router: `/:id`,
@@ -97,7 +97,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:HistorialadminController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:HistorialadminController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:HistorialadminController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:HistorialadminController"],
         beego.ControllerComments{
             Method: "Post",
             Router: `/`,
@@ -106,7 +106,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:HistorialadminController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:HistorialadminController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:HistorialadminController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:HistorialadminController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: `/`,
@@ -115,7 +115,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:HistorialadminController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:HistorialadminController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:HistorialadminController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:HistorialadminController"],
         beego.ControllerComments{
             Method: "GetOne",
             Router: `/:id`,
@@ -124,7 +124,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:HistorialadminController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:HistorialadminController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:HistorialadminController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:HistorialadminController"],
         beego.ControllerComments{
             Method: "Put",
             Router: `/:id`,
@@ -133,7 +133,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:HistorialadminController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:HistorialadminController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:HistorialadminController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:HistorialadminController"],
         beego.ControllerComments{
             Method: "Delete",
             Router: `/:id`,
@@ -142,7 +142,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:NivelAccesoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:NivelAccesoController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:NivelAccesoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:NivelAccesoController"],
         beego.ControllerComments{
             Method: "Post",
             Router: `/`,
@@ -151,7 +151,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:NivelAccesoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:NivelAccesoController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:NivelAccesoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:NivelAccesoController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: `/`,
@@ -160,7 +160,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:NivelAccesoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:NivelAccesoController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:NivelAccesoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:NivelAccesoController"],
         beego.ControllerComments{
             Method: "GetOne",
             Router: `/:id`,
@@ -169,7 +169,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:NivelAccesoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:NivelAccesoController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:NivelAccesoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:NivelAccesoController"],
         beego.ControllerComments{
             Method: "Put",
             Router: `/:id`,
@@ -178,7 +178,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:NivelAccesoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:NivelAccesoController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:NivelAccesoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:NivelAccesoController"],
         beego.ControllerComments{
             Method: "Delete",
             Router: `/:id`,
@@ -187,7 +187,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:NotificacionController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:NotificacionController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:NotificacionController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:NotificacionController"],
         beego.ControllerComments{
             Method: "Post",
             Router: `/`,
@@ -196,7 +196,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:NotificacionController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:NotificacionController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:NotificacionController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:NotificacionController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: `/`,
@@ -205,7 +205,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:NotificacionController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:NotificacionController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:NotificacionController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:NotificacionController"],
         beego.ControllerComments{
             Method: "GetOne",
             Router: `/:id`,
@@ -214,7 +214,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:NotificacionController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:NotificacionController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:NotificacionController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:NotificacionController"],
         beego.ControllerComments{
             Method: "Put",
             Router: `/:id`,
@@ -223,7 +223,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:NotificacionController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:NotificacionController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:NotificacionController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:NotificacionController"],
         beego.ControllerComments{
             Method: "Delete",
             Router: `/:id`,
@@ -232,7 +232,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:PermisoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:PermisoController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:PermisoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:PermisoController"],
         beego.ControllerComments{
             Method: "Post",
             Router: `/`,
@@ -241,7 +241,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:PermisoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:PermisoController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:PermisoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:PermisoController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: `/`,
@@ -250,7 +250,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:PermisoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:PermisoController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:PermisoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:PermisoController"],
         beego.ControllerComments{
             Method: "GetOne",
             Router: `/:id`,
@@ -259,7 +259,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:PermisoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:PermisoController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:PermisoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:PermisoController"],
         beego.ControllerComments{
             Method: "Put",
             Router: `/:id`,
@@ -268,7 +268,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:PermisoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers:PermisoController"],
+    beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:PermisoController"] = append(beego.GlobalControllerRouter["Xchango_APIS_CRUD/controllers_sistema:PermisoController"],
         beego.ControllerComments{
             Method: "Delete",
             Router: `/:id`,

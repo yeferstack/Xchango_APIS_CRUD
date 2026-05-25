@@ -1,4 +1,4 @@
-package models
+package models_sistema
 
 import (
 	"errors"

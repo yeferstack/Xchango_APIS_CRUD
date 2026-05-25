@@ -1,7 +1,7 @@
-package controllers
+package controllers_sistema
 
 import (
-	"Xchango_APIS_CRUD/models"
+	"Xchango_APIS_CRUD/models_sistema"
 	"encoding/json"
 	"errors"
 	"strconv"
@@ -27,14 +27,14 @@ func (c *HistorialadminController) URLMapping() {
 // Post ...
 // @Title Post
 // @Description create Historialadmin
-// @Param	body		body 	models.Historialadmin	true		"body for Historialadmin content"
-// @Success 201 {int} models.Historialadmin
+// @Param	body		body 	models_sistema.Historialadmin	true		"body for Historialadmin content"
+// @Success 201 {int} models_sistema.Historialadmin
 // @Failure 403 body is empty
 // @router / [post]
 func (c *HistorialadminController) Post() {
-	var v models.Historialadmin
+	var v models_sistema.Historialadmin
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddHistorialadmin(&v); err == nil {
+		if _, err := models_sistema.AddHistorialadmin(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
@@ -50,13 +50,13 @@ func (c *HistorialadminController) Post() {
 // @Title Get One
 // @Description get Historialadmin by id
 // @Param	id		path 	string	true		"The key for staticblock"
-// @Success 200 {object} models.Historialadmin
+// @Success 200 {object} models_sistema.Historialadmin
 // @Failure 403 :id is empty
 // @router /:id [get]
 func (c *HistorialadminController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetHistorialadminById(id)
+	v, err := models_sistema.GetHistorialadminById(id)
 	if err != nil {
 		c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": "Error en el servicio GetOne: La solicitud contiene un parametro incorrecto o no existe ningun registro"}
 	} else {
@@ -74,7 +74,7 @@ func (c *HistorialadminController) GetOne() {
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.Historialadmin
+// @Success 200 {object} models_sistema.Historialadmin
 // @Failure 403
 // @router / [get]
 func (c *HistorialadminController) GetAll() {
@@ -119,7 +119,7 @@ func (c *HistorialadminController) GetAll() {
 		}
 	}
 
-l, err := models.GetAllHistorialadmin(query, fields, sortby, order, offset, limit)
+l, err := models_sistema.GetAllHistorialadmin(query, fields, sortby, order, offset, limit)
 	if err != nil {
 		c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": "Error en el servicio GetAll: La solicitud contiene un parametro incorrecto o no existe ningun registro"}
 	} else {
@@ -132,16 +132,16 @@ l, err := models.GetAllHistorialadmin(query, fields, sortby, order, offset, limi
 // @Title Put
 // @Description update the Historialadmin
 // @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.Historialadmin	true		"body for Historialadmin content"
-// @Success 200 {object} models.Historialadmin
+// @Param	body		body 	models_sistema.Historialadmin	true		"body for Historialadmin content"
+// @Success 200 {object} models_sistema.Historialadmin
 // @Failure 403 :id is not int
 // @router /:id [put]
 func (c *HistorialadminController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.Historialadmin{Id: id}
+	v := models_sistema.Historialadmin{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateHistorialadminById(&v); err == nil {
+		if err := models_sistema.UpdateHistorialadminById(&v); err == nil {
 			c.Data["json"] = "OK"
 		} else {
 			c.Data["json"] = err.Error()
@@ -162,7 +162,7 @@ func (c *HistorialadminController) Put() {
 func (c *HistorialadminController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteHistorialadmin(id); err == nil {
+	if err := models_sistema.DeleteHistorialadmin(id); err == nil {
 		c.Data["json"] = "OK"
 	} else {
 		c.Data["json"] = err.Error()
