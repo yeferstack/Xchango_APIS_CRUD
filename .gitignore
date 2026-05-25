@@ -1,0 +1,6 @@
+# Ignorar el archivo de variables de entorno
+.env
+
+# Ignorar los archivos ejecutables de Go (para que no pesen en GitHub)
+*.exe
+*.exe~
