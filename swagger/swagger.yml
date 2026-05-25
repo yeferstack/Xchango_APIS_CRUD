@@ -1,0 +1,925 @@
+swagger: "2.0"
+info:
+  title: beego Test API
+  description: |
+    beego has a very cool tools to autogenerate documents for your API
+  version: 1.0.0
+  termsOfService: http://beego.me/
+  contact:
+    email: astaxie@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+basePath: /v1
+paths:
+  /administrador/:
+    get:
+      tags:
+      - administrador
+      description: |-
+        get Administrador
+        <br>
+      operationId: AdministradorController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Administrador'
+        "403":
+          description: ""
+    post:
+      tags:
+      - administrador
+      description: |-
+        create Administrador
+        <br>
+      operationId: AdministradorController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Administrador content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Administrador'
+      responses:
+        "201":
+          description: '{int} models.Administrador'
+        "403":
+          description: body is empty
+  /administrador/{id}:
+    get:
+      tags:
+      - administrador
+      description: |-
+        get Administrador by id
+        <br>
+      operationId: AdministradorController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Administrador'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - administrador
+      description: |-
+        update the Administrador
+        <br>
+      operationId: AdministradorController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Administrador content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Administrador'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Administrador'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - administrador
+      description: |-
+        delete the Administrador
+        <br>
+      operationId: AdministradorController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /administradorpermiso/:
+    get:
+      tags:
+      - administradorpermiso
+      description: |-
+        get Administradorpermiso
+        <br>
+      operationId: AdministradorpermisoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Administradorpermiso'
+        "403":
+          description: ""
+    post:
+      tags:
+      - administradorpermiso
+      description: |-
+        create Administradorpermiso
+        <br>
+      operationId: AdministradorpermisoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Administradorpermiso content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Administradorpermiso'
+      responses:
+        "201":
+          description: '{int} models.Administradorpermiso'
+        "403":
+          description: body is empty
+  /administradorpermiso/{id}:
+    get:
+      tags:
+      - administradorpermiso
+      description: |-
+        get Administradorpermiso by id
+        <br>
+      operationId: AdministradorpermisoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Administradorpermiso'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - administradorpermiso
+      description: |-
+        update the Administradorpermiso
+        <br>
+      operationId: AdministradorpermisoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Administradorpermiso content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Administradorpermiso'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Administradorpermiso'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - administradorpermiso
+      description: |-
+        delete the Administradorpermiso
+        <br>
+      operationId: AdministradorpermisoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /historialadmin/:
+    get:
+      tags:
+      - historialadmin
+      description: |-
+        get Historialadmin
+        <br>
+      operationId: HistorialadminController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Historialadmin'
+        "403":
+          description: ""
+    post:
+      tags:
+      - historialadmin
+      description: |-
+        create Historialadmin
+        <br>
+      operationId: HistorialadminController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Historialadmin content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Historialadmin'
+      responses:
+        "201":
+          description: '{int} models.Historialadmin'
+        "403":
+          description: body is empty
+  /historialadmin/{id}:
+    get:
+      tags:
+      - historialadmin
+      description: |-
+        get Historialadmin by id
+        <br>
+      operationId: HistorialadminController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Historialadmin'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - historialadmin
+      description: |-
+        update the Historialadmin
+        <br>
+      operationId: HistorialadminController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Historialadmin content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Historialadmin'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Historialadmin'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - historialadmin
+      description: |-
+        delete the Historialadmin
+        <br>
+      operationId: HistorialadminController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /nivel_acceso/:
+    get:
+      tags:
+      - nivel_acceso
+      description: |-
+        get NivelAcceso
+        <br>
+      operationId: NivelAccesoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.NivelAcceso'
+        "403":
+          description: ""
+    post:
+      tags:
+      - nivel_acceso
+      description: |-
+        create NivelAcceso
+        <br>
+      operationId: NivelAccesoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for NivelAcceso content
+        required: true
+        schema:
+          $ref: '#/definitions/models.NivelAcceso'
+      responses:
+        "201":
+          description: '{int} models.NivelAcceso'
+        "403":
+          description: body is empty
+  /nivel_acceso/{id}:
+    get:
+      tags:
+      - nivel_acceso
+      description: |-
+        get NivelAcceso by id
+        <br>
+      operationId: NivelAccesoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.NivelAcceso'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - nivel_acceso
+      description: |-
+        update the NivelAcceso
+        <br>
+      operationId: NivelAccesoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for NivelAcceso content
+        required: true
+        schema:
+          $ref: '#/definitions/models.NivelAcceso'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.NivelAcceso'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - nivel_acceso
+      description: |-
+        delete the NivelAcceso
+        <br>
+      operationId: NivelAccesoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /notificacion/:
+    get:
+      tags:
+      - notificacion
+      description: |-
+        get Notificacion
+        <br>
+      operationId: NotificacionController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Notificacion'
+        "403":
+          description: ""
+    post:
+      tags:
+      - notificacion
+      description: |-
+        create Notificacion
+        <br>
+      operationId: NotificacionController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Notificacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Notificacion'
+      responses:
+        "201":
+          description: '{int} models.Notificacion'
+        "403":
+          description: body is empty
+  /notificacion/{id}:
+    get:
+      tags:
+      - notificacion
+      description: |-
+        get Notificacion by id
+        <br>
+      operationId: NotificacionController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Notificacion'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - notificacion
+      description: |-
+        update the Notificacion
+        <br>
+      operationId: NotificacionController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Notificacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Notificacion'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Notificacion'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - notificacion
+      description: |-
+        delete the Notificacion
+        <br>
+      operationId: NotificacionController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /permiso/:
+    get:
+      tags:
+      - permiso
+      description: |-
+        get Permiso
+        <br>
+      operationId: PermisoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Permiso'
+        "403":
+          description: ""
+    post:
+      tags:
+      - permiso
+      description: |-
+        create Permiso
+        <br>
+      operationId: PermisoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Permiso content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Permiso'
+      responses:
+        "201":
+          description: '{int} models.Permiso'
+        "403":
+          description: body is empty
+  /permiso/{id}:
+    get:
+      tags:
+      - permiso
+      description: |-
+        get Permiso by id
+        <br>
+      operationId: PermisoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Permiso'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - permiso
+      description: |-
+        update the Permiso
+        <br>
+      operationId: PermisoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Permiso content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Permiso'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Permiso'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - permiso
+      description: |-
+        delete the Permiso
+        <br>
+      operationId: PermisoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+definitions:
+  models.Administrador:
+    title: Administrador
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      FechaAsignacion:
+        type: string
+        format: datetime
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      IdNivelacceso:
+        $ref: '#/definitions/models.NivelAcceso'
+      IdUsuario:
+        type: integer
+        format: int64
+  models.Administradorpermiso:
+    title: Administradorpermiso
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      IdAdmin:
+        $ref: '#/definitions/models.Administrador'
+      IdPermiso:
+        $ref: '#/definitions/models.Permiso'
+  models.Historialadmin:
+    title: Historialadmin
+    type: object
+    properties:
+      Accion:
+        type: string
+      Activo:
+        type: boolean
+      Descripcion:
+        type: string
+      FechaAccion:
+        type: string
+        format: datetime
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      IdAdmin:
+        $ref: '#/definitions/models.Administrador'
+      IdObjeto:
+        type: integer
+        format: int64
+      TipoObjeto:
+        type: string
+  models.NivelAcceso:
+    title: NivelAcceso
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      FechaAsignacion:
+        type: string
+        format: datetime
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+  models.Notificacion:
+    title: Notificacion
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      IdReferencia:
+        type: integer
+        format: int64
+      IdUsuario:
+        type: integer
+        format: int64
+      Leido:
+        type: boolean
+      Mensaje:
+        type: string
+      Tipo:
+        type: string
+      TipoReferencia:
+        type: string
+      Titulo:
+        type: string
+  models.Permiso:
+    title: Permiso
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      Descripcion:
+        type: string
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+tags:
+- name: notificacion
+  description: |
+    NotificacionController operations for Notificacion
+- name: nivel_acceso
+  description: |
+    NivelAccesoController operations for NivelAcceso
+- name: administrador
+  description: |
+    AdministradorController operations for Administrador
+- name: administradorpermiso
+  description: |
+    AdministradorpermisoController operations for Administradorpermiso
+- name: permiso
+  description: |
+    PermisoController operations for Permiso
+- name: historialadmin
+  description: |
+    HistorialadminController operations for Historialadmin
