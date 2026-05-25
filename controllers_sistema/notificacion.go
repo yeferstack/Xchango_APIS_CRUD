@@ -1,7 +1,7 @@
-package controllers
+package controllers_sistema
 
 import (
-	"Xchango_APIS_CRUD/models"
+	"Xchango_APIS_CRUD/models_sistema"
 	"encoding/json"
 	"errors"
 	"strconv"
@@ -10,13 +10,13 @@ import (
 	beego "github.com/beego/beego/v2/server/web"
 )
 
-// NivelAccesoController operations for NivelAcceso
-type NivelAccesoController struct {
+// NotificacionController operations for Notificacion
+type NotificacionController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *NivelAccesoController) URLMapping() {
+func (c *NotificacionController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -26,15 +26,15 @@ func (c *NivelAccesoController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description create NivelAcceso
-// @Param	body		body 	models.NivelAcceso	true		"body for NivelAcceso content"
-// @Success 201 {int} models.NivelAcceso
+// @Description create Notificacion
+// @Param	body		body 	models_sistema.Notificacion	true		"body for Notificacion content"
+// @Success 201 {int} models_sistema.Notificacion
 // @Failure 403 body is empty
 // @router / [post]
-func (c *NivelAccesoController) Post() {
-	var v models.NivelAcceso
+func (c *NotificacionController) Post() {
+	var v models_sistema.Notificacion
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddNivelAcceso(&v); err == nil {
+		if _, err := models_sistema.AddNotificacion(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
@@ -48,15 +48,15 @@ func (c *NivelAccesoController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description get NivelAcceso by id
+// @Description get Notificacion by id
 // @Param	id		path 	string	true		"The key for staticblock"
-// @Success 200 {object} models.NivelAcceso
+// @Success 200 {object} models_sistema.Notificacion
 // @Failure 403 :id is empty
 // @router /:id [get]
-func (c *NivelAccesoController) GetOne() {
+func (c *NotificacionController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetNivelAccesoById(id)
+	v, err := models_sistema.GetNotificacionById(id)
 	if err != nil {
 		c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": "Error en el servicio GetOne: La solicitud contiene un parametro incorrecto o no existe ningun registro"}
 	} else {
@@ -67,17 +67,17 @@ func (c *NivelAccesoController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description get NivelAcceso
+// @Description get Notificacion
 // @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
 // @Param	fields	query	string	false	"Fields returned. e.g. col1,col2 ..."
 // @Param	sortby	query	string	false	"Sorted-by fields. e.g. col1,col2 ..."
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.NivelAcceso
+// @Success 200 {object} models_sistema.Notificacion
 // @Failure 403
 // @router / [get]
-func (c *NivelAccesoController) GetAll() {
+func (c *NotificacionController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -119,29 +119,29 @@ func (c *NivelAccesoController) GetAll() {
 		}
 	}
 
-	l, err := models.GetAllNivelAcceso(query, fields, sortby, order, offset, limit)
+l, err := models_sistema.GetAllNotificacion(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": "Error en el servicio GetAll: La solicitud contiene un parametro incorrecto o no existe ningun registro"}
 	} else {
-		c.Data["json"] = l
+		c.Data["json"] = map[string]interface{}{"success": true, "status": 200, "Message": "Peticion exitosa", "data": l}
 	}
 	c.ServeJSON()
 }
 
 // Put ...
 // @Title Put
-// @Description update the NivelAcceso
+// @Description update the Notificacion
 // @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.NivelAcceso	true		"body for NivelAcceso content"
-// @Success 200 {object} models.NivelAcceso
+// @Param	body		body 	models_sistema.Notificacion	true		"body for Notificacion content"
+// @Success 200 {object} models_sistema.Notificacion
 // @Failure 403 :id is not int
 // @router /:id [put]
-func (c *NivelAccesoController) Put() {
+func (c *NotificacionController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.NivelAcceso{Id: id}
+	v := models_sistema.Notificacion{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateNivelAccesoById(&v); err == nil {
+		if err := models_sistema.UpdateNotificacionById(&v); err == nil {
 			c.Data["json"] = "OK"
 		} else {
 			c.Data["json"] = err.Error()
@@ -154,15 +154,15 @@ func (c *NivelAccesoController) Put() {
 
 // Delete ...
 // @Title Delete
-// @Description delete the NivelAcceso
+// @Description delete the Notificacion
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 403 id is empty
 // @router /:id [delete]
-func (c *NivelAccesoController) Delete() {
+func (c *NotificacionController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteNivelAcceso(id); err == nil {
+	if err := models_sistema.DeleteNotificacion(id); err == nil {
 		c.Data["json"] = "OK"
 	} else {
 		c.Data["json"] = err.Error()

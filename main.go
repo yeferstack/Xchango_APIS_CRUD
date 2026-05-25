@@ -5,7 +5,7 @@ import (
 	"os"
 	"strconv"
 
-	_ "Xchango_APIS_CRUD/routers"
+	_ "Xchango_APIS_CRUD/routers_sistema"
 
 	"github.com/beego/beego/v2/client/orm"
 	beego "github.com/beego/beego/v2/server/web"
