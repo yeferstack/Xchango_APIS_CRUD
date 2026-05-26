@@ -11,7 +11,7 @@ import (
 )
 
 type NivelAcceso struct {
-	Id                int       `orm:"column(id_nivelacceso);pk"`
+	Id                int       `orm:"column(id_nivelacceso);pk:auto"`
 	Nombre            string    `orm:"column(nombre)"`
 	Activo            bool      `orm:"column(activo)"`
 	FechaAsignacion   time.Time `orm:"column(fecha_asignacion);type(timestamp without time zone)"`

@@ -3,7 +3,6 @@ package controllers_sistema
 import (
 	"Xchango_APIS_CRUD/models_sistema"
 	"encoding/json"
-	"errors"
 	"strconv"
 	"strings"
 
@@ -33,16 +32,31 @@ func (c *PermisoController) URLMapping() {
 // @router / [post]
 func (c *PermisoController) Post() {
 	var v models_sistema.Permiso
+
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if _, err := models_sistema.AddPermiso(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
-			c.Data["json"] = v
+			c.Data["json"] = map[string]interface{}{
+				"success": true,
+				"status":  201,
+				"Message": "Peticion exitosa",
+				"data":    v,
+			}
 		} else {
-			c.Data["json"] = err.Error()
+			c.Data["json"] = map[string]interface{}{
+				"success": false,
+				"status":  400,
+				"Message": err.Error(),
+			}
 		}
 	} else {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = map[string]interface{}{
+			"success": false,
+			"status":  400,
+			"Message": err.Error(),
+		}
 	}
+
 	c.ServeJSON()
 }
 
@@ -56,12 +70,24 @@ func (c *PermisoController) Post() {
 func (c *PermisoController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
+
 	v, err := models_sistema.GetPermisoById(id)
+
 	if err != nil {
-		c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": "Error en el servicio GetOne: La solicitud contiene un parametro incorrecto o no existe ningun registro"}
+		c.Data["json"] = map[string]interface{}{
+			"success": false,
+			"status":  400,
+			"Message": "Error en el servicio GetOne: La solicitud contiene un parametro incorrecto o no existe ningun registro",
+		}
 	} else {
-		c.Data["json"] = map[string]interface{}{"success": true, "status": 200, "Message": "Peticion exitosa", "data": v}
+		c.Data["json"] = map[string]interface{}{
+			"success": true,
+			"status":  200,
+			"Message": "Peticion exitosa",
+			"data":    v,
+		}
 	}
+
 	c.ServeJSON()
 }
 
@@ -89,42 +115,64 @@ func (c *PermisoController) GetAll() {
 	if v := c.GetString("fields"); v != "" {
 		fields = strings.Split(v, ",")
 	}
+
 	// limit: 10 (default is 10)
 	if v, err := c.GetInt64("limit"); err == nil {
 		limit = v
 	}
+
 	// offset: 0 (default is 0)
 	if v, err := c.GetInt64("offset"); err == nil {
 		offset = v
 	}
+
 	// sortby: col1,col2
 	if v := c.GetString("sortby"); v != "" {
 		sortby = strings.Split(v, ",")
 	}
+
 	// order: desc,asc
 	if v := c.GetString("order"); v != "" {
 		order = strings.Split(v, ",")
 	}
+
 	// query: k:v,k:v
 	if v := c.GetString("query"); v != "" {
 		for _, cond := range strings.Split(v, ",") {
 			kv := strings.SplitN(cond, ":", 2)
+
 			if len(kv) != 2 {
-				c.Data["json"] = errors.New("Error: invalid query key/value pair")
+				c.Data["json"] = map[string]interface{}{
+					"success": false,
+					"status":  400,
+					"Message": "Error: invalid query key/value pair",
+				}
 				c.ServeJSON()
 				return
 			}
+
 			k, v := kv[0], kv[1]
 			query[k] = v
 		}
 	}
 
-l, err := models_sistema.GetAllPermiso(query, fields, sortby, order, offset, limit)
+	l, err := models_sistema.GetAllPermiso(query, fields, sortby, order, offset, limit)
+
 	if err != nil {
-		c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": "Error en el servicio GetAll: La solicitud contiene un parametro incorrecto o no existe ningun registro"}
+		c.Data["json"] = map[string]interface{}{
+			"success": false,
+			"status":  400,
+			"Message": "Error en el servicio GetAll: La solicitud contiene un parametro incorrecto o no existe ningun registro",
+		}
 	} else {
-		c.Data["json"] = map[string]interface{}{"success": true, "status": 200, "Message": "Peticion exitosa", "data": l}
+		c.Data["json"] = map[string]interface{}{
+			"success": true,
+			"status":  200,
+			"Message": "Peticion exitosa",
+			"data":    l,
+		}
 	}
+
 	c.ServeJSON()
 }
 
@@ -139,16 +187,32 @@ l, err := models_sistema.GetAllPermiso(query, fields, sortby, order, offset, lim
 func (c *PermisoController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
+
 	v := models_sistema.Permiso{Id: id}
+
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models_sistema.UpdatePermisoById(&v); err == nil {
-			c.Data["json"] = "OK"
+			c.Data["json"] = map[string]interface{}{
+				"success": true,
+				"status":  200,
+				"Message": "Peticion exitosa",
+				"data":    v,
+			}
 		} else {
-			c.Data["json"] = err.Error()
+			c.Data["json"] = map[string]interface{}{
+				"success": false,
+				"status":  400,
+				"Message": err.Error(),
+			}
 		}
 	} else {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = map[string]interface{}{
+			"success": false,
+			"status":  400,
+			"Message": err.Error(),
+		}
 	}
+
 	c.ServeJSON()
 }
 
@@ -162,10 +226,20 @@ func (c *PermisoController) Put() {
 func (c *PermisoController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
+
 	if err := models_sistema.DeletePermiso(id); err == nil {
-		c.Data["json"] = "OK"
+		c.Data["json"] = map[string]interface{}{
+			"success": true,
+			"status":  200,
+			"Message": "Peticion exitosa",
+		}
 	} else {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = map[string]interface{}{
+			"success": false,
+			"status":  400,
+			"Message": err.Error(),
+		}
 	}
+
 	c.ServeJSON()
 }

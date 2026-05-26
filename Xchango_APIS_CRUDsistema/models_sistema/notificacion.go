@@ -11,7 +11,7 @@ import (
 )
 
 type Notificacion struct {
-	Id                int       `orm:"column(id_notificacion);pk"`
+	Id                int       `orm:"column(id_notificacion);pk:auto"`
 	IdUsuario         int       `orm:"column(id_usuario)"`
 	Titulo            string    `orm:"column(titulo)"`
 	Mensaje           string    `orm:"column(mensaje)"`
