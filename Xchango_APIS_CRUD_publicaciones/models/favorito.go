@@ -41,6 +41,7 @@ func GetFavoritoById(id int) (v *Favorito, err error) {
 	o := orm.NewOrm()
 	v = &Favorito{Id: id}
 	if err = o.Read(v); err == nil {
+		
 		return v, nil
 	}
 	return nil, err
