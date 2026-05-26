@@ -36,12 +36,12 @@ func (c *AdministradorController) Post() {
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if _, err := models_sistema.AddAdministrador(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
-			c.Data["json"] = v
+			c.Data["json"] = map[string]interface{}{"success": true, "status": 201, "Message": "Peticion exitosa", "data": v}
 		} else {
-			c.Data["json"] = err.Error()
+			c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": err.Error()}
 		}
 	} else {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": err.Error()}
 	}
 	c.ServeJSON()
 }
@@ -136,12 +136,12 @@ func (c *AdministradorController) Put() {
 	v := models_sistema.Administrador{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models_sistema.UpdateAdministradorById(&v); err == nil {
-			c.Data["json"] = "OK"
+			c.Data["json"] = map[string]interface{}{"success": true, "status": 200, "Message": "Peticion exitosa", "data": v}
 		} else {
-			c.Data["json"] = err.Error()
+			c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": err.Error()}
 		}
 	} else {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": err.Error()}
 	}
 	c.ServeJSON()
 }
@@ -157,9 +157,9 @@ func (c *AdministradorController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	if err := models_sistema.DeleteAdministrador(id); err == nil {
-		c.Data["json"] = "OK"
+		c.Data["json"] = map[string]interface{}{"success": true, "status": 200, "Message": "Peticion exitosa"}
 	} else {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": err.Error()}
 	}
 	c.ServeJSON()
 }

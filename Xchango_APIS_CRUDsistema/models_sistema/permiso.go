@@ -11,7 +11,7 @@ import (
 )
 
 type Permiso struct {
-	Id                int       `orm:"column(id_permiso);pk"`
+	Id                int       `orm:"column(id_permiso);pk:auto"`
 	Nombre            string    `orm:"column(nombre)"`
 	Descripcion       string    `orm:"column(descripcion);null"`
 	Activo            bool      `orm:"column(activo)"`

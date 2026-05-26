@@ -36,12 +36,12 @@ func (c *NivelAccesoController) Post() {
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if _, err := models_sistema.AddNivelAcceso(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
-			c.Data["json"] = v
+			c.Data["json"] = map[string]interface{}{"success": true, "status": 201, "Message": "Peticion exitosa", "data": v}
 		} else {
-			c.Data["json"] = err.Error()
+			c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": err.Error()}
 		}
 	} else {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": err.Error()}
 	}
 	c.ServeJSON()
 }
@@ -121,9 +121,9 @@ func (c *NivelAccesoController) GetAll() {
 
 	l, err := models_sistema.GetAllNivelAcceso(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": "Error en el servicio GetAll: La solicitud contiene un parametro incorrecto o no existe ningun registro"}
 	} else {
-		c.Data["json"] = l
+		c.Data["json"] = map[string]interface{}{"success": true, "status": 200, "Message": "Peticion exitosa", "data": l}
 	}
 	c.ServeJSON()
 }
@@ -142,12 +142,12 @@ func (c *NivelAccesoController) Put() {
 	v := models_sistema.NivelAcceso{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models_sistema.UpdateNivelAccesoById(&v); err == nil {
-			c.Data["json"] = "OK"
+			c.Data["json"] = map[string]interface{}{"success": true, "status": 200, "Message": "Peticion exitosa", "data": v}
 		} else {
-			c.Data["json"] = err.Error()
+			c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": err.Error()}
 		}
 	} else {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": err.Error()}
 	}
 	c.ServeJSON()
 }
@@ -163,9 +163,9 @@ func (c *NivelAccesoController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	if err := models_sistema.DeleteNivelAcceso(id); err == nil {
-		c.Data["json"] = "OK"
+		c.Data["json"] = map[string]interface{}{"success": true, "status": 200, "Message": "Peticion exitosa"}
 	} else {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = map[string]interface{}{"success": false, "status": 400, "Message": err.Error()}
 	}
 	c.ServeJSON()
 }
