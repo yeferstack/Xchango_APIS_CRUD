@@ -12,7 +12,7 @@ import (
 
 type Biendigital struct {
 	Id                int          `orm:"column(id_bien_digital);pk"`
-	IdPublicacion     *Publicacion `orm:"column(id_publicacion);rel(fk)"`
+	IdPublicacion     *Publicacion `orm:"column(id_publicacion);rel(fk);on delete (cascade)"`
 	TipoArchivo       string       `orm:"column(tipo_archivo);null"`
 	TamanoMb          float64      `orm:"column(tamano_mb);null"`
 	Licencia          string       `orm:"column(licencia);null"`
@@ -44,6 +44,7 @@ func GetBiendigitalById(id int) (v *Biendigital, err error) {
 	o := orm.NewOrm()
 	v = &Biendigital{Id: id}
 	if err = o.Read(v); err == nil {
+		o.LoadRelated(v,"IdPublicacion")
 		return v, nil
 	}
 	return nil, err

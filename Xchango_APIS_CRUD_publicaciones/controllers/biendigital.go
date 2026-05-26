@@ -6,6 +6,7 @@ import (
 	"errors"
 	"strconv"
 	"strings"
+	"github.com/beego/beego/v2/core/logs"
 
 	beego "github.com/beego/beego/v2/server/web"
 )
@@ -35,16 +36,17 @@ func (c *BiendigitalController) Post() {
 	var v models.Biendigital
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if _, err := models.AddBiendigital(&v); err == nil {
-			c.Ctx.Output.SetStatus(201)
-			c.Data["json"] = v
+	c.Ctx.Output.SetStatus(201)
+			c.Data["json"] = map[string]interface{}{"success": true, "status": 200, "message": "Peticion existosa", "Data": v}
 		} else {
-			c.Data["json"] = err.Error()
+			c.Data["json"] = map[string]interface{}{"success": true, "status": 400, "message": "Error en el servidor post: la solicitud tiene una llave duplicada en cliente pkey"}
 		}
 	} else {
 		c.Data["json"] = err.Error()
 	}
 	c.ServeJSON()
 }
+
 
 // GetOne ...
 // @Title Get One
@@ -58,9 +60,10 @@ func (c *BiendigitalController) GetOne() {
 	id, _ := strconv.Atoi(idStr)
 	v, err := models.GetBiendigitalById(id)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		c.Data["json"] = map[string]interface{}{"success": true, "status": 400, "message": "Error en el servidor GetOne: la solicitud contiene un paramentro incorrecto o no existe ningu registro"}
 	} else {
-		c.Data["json"] = v
+		c.Data["json"] = map[string]interface{}{"success": true, "status": 200, "message": "Peticion existosa", "Data": v}
 	}
 	c.ServeJSON()
 }
@@ -123,7 +126,10 @@ func (c *BiendigitalController) GetAll() {
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
-		c.Data["json"] = l
+		if l == nil {
+			c.Data["json"] = map[string]interface{}{"success": true, "status": 400, "message": "Error en el servidor GetOne: la solicitud contiene un paramentro  no existe ningun registro"}
+		}
+		c.Data["json"] = map[string]interface{}{"success": true, "status": 200, "message": "Peticion existosa", "Data": l}
 	}
 	c.ServeJSON()
 }
@@ -142,9 +148,9 @@ func (c *BiendigitalController) Put() {
 	v := models.Biendigital{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateBiendigitalById(&v); err == nil {
-			c.Data["json"] = "OK"
+			c.Data["json"] = map[string]interface{}{"success": true, "status": 200, "message": "Peticion existosa", "Data": v}
 		} else {
-			c.Data["json"] = err.Error()
+			c.Data["json"] = map[string]interface{}{"success": true, "status": 400, "message": "Error en el servidor PUT: la solicitud contiene un paramentro no existete en ningun registro"}
 		}
 	} else {
 		c.Data["json"] = err.Error()
@@ -163,9 +169,9 @@ func (c *BiendigitalController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	if err := models.DeleteBiendigital(id); err == nil {
-		c.Data["json"] = "OK"
+		c.Data["json"] = map[string]interface{}{"success": true, "status": 200, "message": "Peticion existosa", "Data": id}
 	} else {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = map[string]interface{}{"success": true, "status": 400, "message": "Error en el servidor delete: no existe el dato que desea eliminar"}
 	}
 	c.ServeJSON()
 }
