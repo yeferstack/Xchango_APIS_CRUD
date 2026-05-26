@@ -250,23 +250,6 @@ Xchango_APIS_CRUD_publicaciones/
 
 ---
 
-## Variables de entorno
-
-El archivo `.env` debe contener las siguientes variables:
-
-```env
-XCHANGO_HTTP_PORT=8081
-XCHANGO_RUN_MODE=dev
-XCHANGO_PGUSER=postgres
-XCHANGO_PGPASS=postgres
-XCHANGO_PGHOST=localhost
-XCHANGO_PGPORT=5432
-XCHANGO_PGDB=Xchango_db
-XCHANGO_PGSCHEMA=Publicaciones
-```
-
----
-
 ## Base de datos
 
 El schema `Publicaciones` contiene las siguientes tablas:
@@ -399,23 +382,6 @@ Xchango_APIS_CRUD_Transacciones_comunicacion/
 
 ---
 
-## Variables de entorno
-
-El archivo `.env` debe contener las siguientes variables:
-
-```env
-XCHANGO_HTTP_PORT=8080
-XCHANGO_RUN_MODE=dev
-XCHANGO_PGUSER=postgres
-XCHANGO_PGPASS=postgres
-XCHANGO_PGHOST=localhost
-XCHANGO_PGPORT=5432
-XCHANGO_PGDB=Xchango_db
-XCHANGO_PGSCHEMA=Transacciones_comunicacion
-```
-
----
-
 ## Base de datos
 
 El schema `Transacciones_comunicacion` contiene las siguientes tablas:
@@ -544,23 +510,6 @@ Xchango_APIS_CRUD_Usuarioseguridad/
 ├── .env                   # Variables de entorno (no subir al repo)
 ├── go.mod
 └── main.go
-```
-
----
-
-## Variables de entorno
-
-El archivo `.env` debe contener las siguientes variables:
-
-```env
-XCHANGO_HTTP_PORT=8080
-XCHANGO_RUN_MODE=dev
-XCHANGO_PGUSER=postgres
-XCHANGO_PGPASS=postgres
-XCHANGO_PGHOST=localhost
-XCHANGO_PGPORT=5432
-XCHANGO_PGDB=Xchango_db
-XCHANGO_PGSCHEMA=usuario_seguridad
 ```
 
 ---
