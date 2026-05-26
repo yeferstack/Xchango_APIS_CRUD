@@ -24,7 +24,7 @@ type IntentoLogin struct {
 }
 
 func (t *IntentoLogin) TableName() string {
-	return "Intento_login"
+	return "intento_login"
 }
 
 func init() {
@@ -45,6 +45,7 @@ func GetIntentoLoginById(id int) (v *IntentoLogin, err error) {
 	o := orm.NewOrm()
 	v = &IntentoLogin{Id: id}
 	if err = o.Read(v); err == nil {
+		o.LoadRelated(v, "IdUsuario")
 		return v, nil
 	}
 	return nil, err
@@ -55,7 +56,7 @@ func GetIntentoLoginById(id int) (v *IntentoLogin, err error) {
 func GetAllIntentoLogin(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(IntentoLogin))
+	qs := o.QueryTable(new(IntentoLogin)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute

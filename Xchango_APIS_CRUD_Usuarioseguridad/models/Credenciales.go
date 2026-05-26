@@ -22,7 +22,7 @@ type Credenciales struct {
 }
 
 func (t *Credenciales) TableName() string {
-	return "Credenciales"
+	return "credenciales"
 }
 
 func init() {
