@@ -29,7 +29,7 @@ type Perfil struct {
 }
 
 func (t *Perfil) TableName() string {
-	return "Perfil"
+	return "perfil"
 }
 
 func init() {
@@ -50,6 +50,7 @@ func GetPerfilById(id int) (v *Perfil, err error) {
 	o := orm.NewOrm()
 	v = &Perfil{Id: id}
 	if err = o.Read(v); err == nil {
+		o.LoadRelated(v, "IdUsuario")
 		return v, nil
 	}
 	return nil, err
@@ -60,7 +61,7 @@ func GetPerfilById(id int) (v *Perfil, err error) {
 func GetAllPerfil(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(Perfil))
+	qs := o.QueryTable(new(Perfil)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
