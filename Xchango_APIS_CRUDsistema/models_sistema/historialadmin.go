@@ -11,7 +11,7 @@ import (
 )
 
 type Historialadmin struct {
-	Id                int           `orm:"column(id_historial);pk"`
+	Id                int           `orm:"column(id_historial);pk;auto"`
 	IdAdmin           *Administrador `orm:"column(id_admin);rel(fk)"`
 	Accion            string        `orm:"column(accion)"`
 	Descripcion       string        `orm:"column(descripcion);null"`

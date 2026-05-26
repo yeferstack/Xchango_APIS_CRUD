@@ -11,7 +11,7 @@ import (
 )
 
 type Administradorpermiso struct {
-	Id                int           `orm:"column(id);pk"`
+	Id                int           `orm:"column(id);pk;auto"`
 	IdAdmin           *Administrador `orm:"column(id_admin);rel(fk)"`
 	IdPermiso         *Permiso      `orm:"column(id_permiso);rel(fk)"`
 	Activo            bool          `orm:"column(activo)"`
