@@ -23,7 +23,7 @@ type RecuperacionContrasena struct {
 }
 
 func (t *RecuperacionContrasena) TableName() string {
-	return "Recuperacion_contrasena"
+	return "recuperacion_contrasena"
 }
 
 func init() {
@@ -44,6 +44,7 @@ func GetRecuperacionContrasenaById(id int) (v *RecuperacionContrasena, err error
 	o := orm.NewOrm()
 	v = &RecuperacionContrasena{Id: id}
 	if err = o.Read(v); err == nil {
+		o.LoadRelated(v, "IdUsuario")
 		return v, nil
 	}
 	return nil, err
@@ -54,7 +55,7 @@ func GetRecuperacionContrasenaById(id int) (v *RecuperacionContrasena, err error
 func GetAllRecuperacionContrasena(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(RecuperacionContrasena))
+	qs := o.QueryTable(new(RecuperacionContrasena)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute

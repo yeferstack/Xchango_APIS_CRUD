@@ -20,7 +20,7 @@ type Usuario struct {
 }
 
 func (t *Usuario) TableName() string {
-	return "Usuario"
+	return "usuario"
 }
 
 func init() {

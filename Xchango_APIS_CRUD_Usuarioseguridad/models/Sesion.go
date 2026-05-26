@@ -25,7 +25,7 @@ type Sesion struct {
 }
 
 func (t *Sesion) TableName() string {
-	return "Sesion"
+	return "sesion"
 }
 
 func init() {
@@ -46,6 +46,7 @@ func GetSesionById(id int) (v *Sesion, err error) {
 	o := orm.NewOrm()
 	v = &Sesion{Id: id}
 	if err = o.Read(v); err == nil {
+		o.LoadRelated(v, "IdUsuario")
 		return v, nil
 	}
 	return nil, err
@@ -56,7 +57,7 @@ func GetSesionById(id int) (v *Sesion, err error) {
 func GetAllSesion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(Sesion))
+	qs := o.QueryTable(new(Sesion)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute

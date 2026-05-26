@@ -19,7 +19,7 @@ func init() {
 
 // Run the migrations
 func (m *InsertTableCredenciales_20260521_163608) Up() {
-	m.SQL("INSERT INTO usuario_seguridad.Credenciales (Id,contrasena_hash, intentos_fallidos, bloqueado, ultimo_login) VALUES (1,'$2b$12$KIXabc123hasheado1sofia', 0, false, '2025-05-18 08:30:00')")
+	m.SQL("INSERT INTO usuario_seguridad.Credenciales (id_usuario, contrasena_hash, intentos_fallidos, bloqueado, ultimo_login) VALUES (1,'$2b$12$KIXabc123hasheado1sofia', 0, false, '2025-05-18 08:30:00')")
 
 }
 

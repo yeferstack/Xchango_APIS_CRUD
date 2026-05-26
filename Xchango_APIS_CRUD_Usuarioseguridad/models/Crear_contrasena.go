@@ -20,7 +20,7 @@ type CrearContrasena struct {
 }
 
 func (t *CrearContrasena) TableName() string {
-	return "Crear_contrasena"
+	return "crear_contrasena"
 }
 
 func init() {
